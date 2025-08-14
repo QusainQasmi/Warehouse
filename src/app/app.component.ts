@@ -3,10 +3,16 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
+  standalone: true,
+  imports: [RouterOutlet],
   styleUrl: './app.component.scss'
 })
+
 export class AppComponent {
-  title = 'warehouse-frontend';
+  
+  title = 'WMS';
+
+  constructor(){}
+
 }
