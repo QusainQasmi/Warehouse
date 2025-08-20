@@ -1,6 +1,17 @@
-<!-- <p>warehouses works!</p> -->
-<ul>
-      <li *ngFor="let warehouse of res">
-        {{ warehouse.name }}
-      </li>
-    </ul>
+<div class="conatiner p-5">
+  <div class="row">
+
+    <div class="col-6">
+      <h2 class="text-dark">Warehouse - Outline</h2>
+      <cs-autocomplete [(ngModel)]="selectedCustomerId" [options]="customers" labelKey="name"
+      valueKey="id" appearance="outline"></cs-autocomplete>
+    </div>
+    
+    <div class="col-6">
+      <h2 class="text-dark">Warehouse - Filled</h2>
+      <cs-autocomplete [(ngModel)]="selectedCustomerId" [options]="customers" labelKey="name" 
+      valueKey="id" appearance="fill">
+    </cs-autocomplete>
+  </div>
+  </div>
+</div>

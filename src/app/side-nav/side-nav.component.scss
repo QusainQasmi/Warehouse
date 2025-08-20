@@ -1,0 +1,25 @@
+.side-container{
+    height: 100vh !important;
+    background: white !important;
+}
+
+.side-panel {
+    width: 230px !important;
+}
+
+.action-btn{
+    position: fixed;
+    top: 100px;
+    z-index: 2000;
+    opacity: 1;
+    background: black;
+    border-radius: 50%;
+    margin-left: -15px;
+}
+
+.company-title{
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    font-size: 20px !important;
+    border-bottom: 2px solid white !important;
+}

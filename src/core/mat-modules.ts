@@ -20,6 +20,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [],
@@ -45,6 +46,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatToolbarModule,
     ReactiveFormsModule,
     MatCheckboxModule,
+    MatAutocompleteModule,
   ],
   exports: [
     MatButtonModule,
@@ -62,13 +64,13 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatMenuModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    CommonModule,
     MatGridListModule,
     MatToolbarModule,
     MatSidenavModule,
     ReactiveFormsModule,
     MatCheckboxModule,
-    CommonModule
+    CommonModule,
+    MatAutocompleteModule
   ],
   providers: [
     {

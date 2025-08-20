@@ -1,8 +1,12 @@
 import { Routes } from '@angular/router';
-import { WarehousesComponent } from './pages/warehouses/warehouses.component';
-import { SideNavComponent } from './pages/side-nav/side-nav.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
 
 export const routes: Routes = [
-  { path: '', component: SideNavComponent },
-  { path: 'warehouses', component: WarehousesComponent }
+  { 
+    path: '', 
+    component: SideNavComponent,
+    children: [
+        { path: 'pages', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)}
+    ]
+  },
 ];
