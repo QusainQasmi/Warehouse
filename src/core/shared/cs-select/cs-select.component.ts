@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-cs-select',
+  selector: 'cs-select',
   standalone: false,
   templateUrl: './cs-select.component.html',
   styleUrl: './cs-select.component.scss'
 })
-export class CsSelectComponent {
 
+export class CsSelectComponent {
+  @Input() csModel: any = null;
+  @Input() datasource: any[] = [];
+  @Input() valueField: string = "";
+  @Input() displayField: string = "";
+  @Input() label: string = ""
 }

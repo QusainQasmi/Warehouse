@@ -21,6 +21,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [],
@@ -47,6 +52,11 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     ReactiveFormsModule,
     MatCheckboxModule,
     MatAutocompleteModule,
+    MatSelectModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    DatePipe
   ],
   exports: [
     MatButtonModule,
@@ -70,7 +80,12 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     ReactiveFormsModule,
     MatCheckboxModule,
     CommonModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatSelectModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    DatePipe
   ],
   providers: [
     {

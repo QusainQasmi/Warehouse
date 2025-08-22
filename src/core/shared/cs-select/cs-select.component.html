@@ -1,1 +1,8 @@
-<p>cs-select works!</p>
+  <mat-form-field>
+    <mat-label>{{ label }}</mat-label>
+    <mat-select [(ngModel)]="csModel">
+      @for (item of datasource; track datasource) {
+        <mat-option [value]="item[valueField]">{{ item[displayField] }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
