@@ -12,14 +12,19 @@ export class CsSetupComponent {
 
   @Input() totalRecCount: number = 100;
   @Input() datasource: any[] = [];
-  @Input() sortField: string = "id";
-  @Input() column: string[] = [];
+  // @Input() sortField: string = "";
+  @Input() column: CsGridColumn[] = [];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  // @ViewChild(MatSort) sort!: MatSort;s
 
   ngAfterViewInit() {
-    this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
+    // this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
   }
 
+}
+
+export class CsGridColumn {
+  displayName: string = "";
+  key: string = "";
 }

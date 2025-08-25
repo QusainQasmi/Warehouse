@@ -1,19 +1,9 @@
-<!-- <div class="example-container mat-elevation-z8">
-  @if (isLoadingResults || isRateLimitReached) {
-    <div class="example-loading-shade">
-      @if (isLoadingResults) {
-        <mat-spinner></mat-spinner>
-      }
-    </div>
-  } -->
-
   <div class="w-100">
-    <table mat-table [dataSource]="datasource" matSortDisableClear
-           matSort [matSortActive]="sortField" matSortDirection="desc">
-        <ng-container *ngFor="let colName of column">
-            <ng-container [matColumnDef]="colName">
-                <th mat-header-cell *matHeaderCellDef> {{ colName }} </th>
-                <td mat-cell *matCellDef="let row">{{ row[colName] }}</td>
+    <table mat-table [dataSource]="datasource">
+        <ng-container *ngFor="let col of column">
+            <ng-container [matColumnDef]="col.displayName">
+                <th mat-header-cell *matHeaderCellDef> {{ col?.displayName }} </th>
+                <td mat-cell *matCellDef="let row">{{ row[col.key] }}</td>
             </ng-container>
         </ng-container> 
       <tr mat-header-row *matHeaderRowDef="column"></tr>
@@ -21,5 +11,8 @@
     </table>
   </div>
 
-  <mat-paginator [length]="totalRecCount" [pageSize]="20"></mat-paginator>
-<!-- </div> -->
+  <ng-container *ngIf="totalRecCount > 0">
+    <mat-paginator [length]="totalRecCount" [pageSize]="20"></mat-paginator>
+  </ng-container>
+
+  <!-- matSort [matSortActive]="sortField" matSortDirection="desc"  matSortDisableClear -->
