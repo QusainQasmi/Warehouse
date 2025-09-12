@@ -1,7 +1,8 @@
-  <mat-form-field>
+  <mat-form-field class="w-100" [appearance]="appearance">
     <mat-label>{{ label }}</mat-label>
     <mat-select [(ngModel)]="csModel">
-      @for (item of datasource; track datasource) {
+      <mat-option [value]="null">None</mat-option>
+      @for (item of _datasource; track _datasource) {
         <mat-option [value]="item[valueField]">{{ item[displayField] }}</mat-option>
       }
     </mat-select>

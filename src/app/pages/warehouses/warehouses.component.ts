@@ -11,54 +11,25 @@ import { CsGridColumn } from '../../../core/shared/cs-setup/cs-setup.component';
 
 export class WarehousesComponent {
 
-  selectedCustomerId: number | null = null;
-  customers: any[] = [
-    { id: 1, name: 'Ali' },
-    { id: 2, name: 'Sara' },
-    { id: 3, name: 'Moin' }
-  ];
-
+  model: any = {};
   _data: any[] = [];
-  recCount: number = 0;
-  cols: CsGridColumn[] = [];
+  columns: CsGridColumn[] = [
+    { key: 'warehouseId', label: 'S.No', sticky: true, sortable: true},
+    { key: 'name', label: 'Name', sticky: false, sortable: true},
+    { key: 'address', label: 'Address', sticky: false, sortable: false},
+    { key: 'city', label: 'City', sticky: false, sortable: false},
+    { key: 'country', label: 'Country', sticky: false, sortable: false}
+  ];
   
-  constructor(public _service: WarehouseService ){}
+  constructor(public _service: WarehouseService ){
+    this.data();
+  }
 
   async data(){
     (await this._service.getAll()).subscribe((data: any) => {
       this._data = data;
-      this.recCount = this._data?.length;
     });
   }
 
-  ngOnInit(){
-    this.cols = [
-      // {
-      //   displayName: 'Id',
-      //   key: 'warehouseId',
-      //   isPrimaryKey: true
-      // },
-      {
-        displayName: 'S.No',
-        key: 'warehouseId'
-      },
-      {
-        displayName: 'Name',
-        key: 'name'
-      },
-      {
-        displayName: 'Address',
-        key: 'address'
-      },
-      {
-        displayName: 'City',
-        key: 'city'
-      },
-      {
-        displayName: 'Country',
-        key: 'country'
-      },
-    ];
-    this.data();
-  }
+  ngOnInit(){}
 }

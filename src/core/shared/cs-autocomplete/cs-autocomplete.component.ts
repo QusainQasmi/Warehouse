@@ -7,36 +7,32 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
   templateUrl: './cs-autocomplete.component.html',
   styleUrl: './cs-autocomplete.component.scss',
 })
-export class CsAutocompleteComponent implements ControlValueAccessor {
+export class CsAutocompleteComponent {
   @Input() options: any[] = [];
-  @Input() labelKey: string = 'label';
-  @Input() valueKey: string = 'value';
+  @Input() label: string = 'label';
+  @Input() valueField: any = 'value';
+  @Input() displayField: string = 'name';
   @Input() type: string = 'text';
+  @Input() csModel: any;
   @Input() appearance: 'outline' | 'fill' = 'outline';
 
-  searchText: string = '';
-  value: any;
+  displayValue: any;
   onChange = (value: any) => {};
   onTouched = () => {};
 
-  get filteredOptions() {
-    return this.options.filter(option => option[this.labelKey].toLowerCase().includes(this.searchText.toLowerCase()));
+  get datasource(): any[] {
+    return this.options;
+  }
+  set datasource(data: any[]) {
+    this.datasource = data;
   }
 
-  selectOption(option: any) {
-    this.value = option[this.valueKey];
-    this.searchText = option[this.labelKey];
-    this.onChange(this.value);
-  }
-
-  writeValue(value: any): void {
-    this.value = value;
-    if (value) {
-      const selected = this.options.find(o => o[this.valueKey] === value);
-      this.searchText = selected ? selected[this.labelKey] : '';
+  selectOption(_value: any) {
+    const _selectObj = this.datasource.find(x => x[this.valueField] === _value);
+    if(_selectObj){
+      this.csModel = _selectObj[this.valueField];
+      this.displayValue = _selectObj[this.displayField];
     }
   }
 
-  registerOnChange(fn: any): void { this.onChange = fn; }
-  registerOnTouched(fn: any): void { this.onTouched = fn; }
 }

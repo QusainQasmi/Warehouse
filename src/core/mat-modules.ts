@@ -66,7 +66,7 @@ import { DatePipe } from '@angular/common';
     MatProgressBarModule,
     MatTooltipModule,
     MatInputModule,
-    FormsModule,
+    FormsModule, 
     MatFormFieldModule,
     MatStepperModule,
     MatDialogModule,

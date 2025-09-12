@@ -1,6 +1,7 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'cs-setup',
@@ -10,21 +11,38 @@ import { MatSort } from '@angular/material/sort';
 })
 export class CsSetupComponent {
 
-  @Input() totalRecCount: number = 100;
   @Input() datasource: any[] = [];
-  // @Input() sortField: string = "";
-  @Input() column: CsGridColumn[] = [];
+  @Input() columns: CsGridColumn[] = [];
+  displayedColumns: string[] = [];
+  dataSource = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  // @ViewChild(MatSort) sort!: MatSort;s
+  @ViewChild(MatSort) sort!: MatSort;
 
-  ngAfterViewInit() {
-    // this.sort.sortChange.subscribe(() => (this.paginator.pageIndex = 0));
+  ngOnChanges() {
+    if (this.datasource) {
+      this.dataSource.data = this.datasource;
+    }
+    if (this.columns) {
+      this.displayedColumns = ['actions', ...this.columns.map(c => c.key)];
+    }
   }
 
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
 
-export class CsGridColumn {
-  displayName: string = "";
-  key: string = "";
+export interface CsGridColumn {
+  key: string;
+  label: string;
+  sticky?: boolean;
+  sortable?: boolean;
+  cellTemplate?: any;
 }

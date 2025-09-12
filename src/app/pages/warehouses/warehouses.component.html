@@ -1,5 +1,5 @@
-<div class="conatiner p-5">
-  <div class="row" style="border-radius: 7px; overflow: hidden; box-shadow: 4px  10px 13px 0px rgb(148, 148, 148);">
+<!-- <div class="conatiner p-5">
+  <div class="row" style="border-radius: 7px; overflow: hidden; box-shadow: 4px  10px 13px 0px rgb(148, 148, 148);"> -->
 
     <!-- <div class="col-4">
       <h2 class="text-dark">Warehouse - Outline</h2>
@@ -9,31 +9,9 @@
 
     <!-- <div class="col-4">
       <h2 class="text-dark">Warehouse - Filled</h2>
-      <cs-autocomplete [(ngModel)]="selectedCustomerId" [options]="customers" labelKey="name" 
-        valueKey="id" appearance="fill">
-      </cs-autocomplete>
     </div> -->
     <!-- <div class="col-4"> -->
-      <table class="Table_styling">
-        <thead class="bg-primary text-white">
-          <tr class="">
-            <th class="p-2">S.No</th>
-            <th class="p-2">Name</th>
-            <th class="p-2">Address</th>
-            <th class="p-2">City</th>
-            <th class="p-2">Country</th>
-          </tr>
-        </thead>
-        <tbody class="text-dark">
-          <tr *ngFor="let row of _data" class="table-row">
-            <td class="p-2 ">{{row?.warehouseId}}</td>
-            <td class="p-2">{{row?.name}}</td>
-            <td class="p-2">{{row?.address}}</td>
-            <td class="p-2">{{row?.city}}</td>
-            <td class="p-2">{{row?.country}}</td>
-          </tr>
-        </tbody>
-      </table>
+
 
       <!-- <table border="1" cellpadding="8" cellspacing="0">
         <thead>
@@ -55,8 +33,28 @@
           </tr>
         </tbody>
       </table> -->
-      <!-- <cs-setup [datasource]="_data" [totalRecCount]="recCount" [column]="cols" sortField="warehouseId"></cs-setup> -->
       <!-- <cs-select></cs-select> -->
     <!-- </div> -->
-  </div>
+  <!-- </div>
+</div> -->
+<div class="container w-100 p-3">
+   <cs-setup [datasource]="_data" [columns]="columns"></cs-setup>
+
+   <div class="w-100 m-2">
+    <cs-input [csModel]="model.inpVal" label="Input"></cs-input>
+   </div>
+   <div class="w-100 m-2">
+      <cs-autocomplete [(ngModel)]="model.autoId" [options]="_data" label="Autocomplete" 
+        valueField="warehouseId" displayField="name"></cs-autocomplete>
+   </div>
+   <div class="w-100 m-2">
+      <cs-select [csModel]="model.selectId" [datasource]="_data" valueField="warehouseId"
+       displayField="name" label="Select"></cs-select>
+   </div>
+
+   <!-- <div class="w-100 m-2">
+    <cs-button icon="search"></cs-button>
+    <cs-button label="Qusain" icon="home"></cs-button>
+    <cs-button label="Peter"></cs-button>
+   </div> -->
 </div>

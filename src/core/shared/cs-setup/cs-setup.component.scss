@@ -1,0 +1,22 @@
+.table-container {
+  margin: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.mat-mdc-header-cell {
+  background-color: #1976d2 !important;
+  color: white !important;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.mat-mdc-cell {
+  background-color: #ffffff;
+  color: #333;
+  font-size: 14px;
+  padding: 12px 8px;
+}

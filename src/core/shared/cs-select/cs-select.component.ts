@@ -12,5 +12,13 @@ export class CsSelectComponent {
   @Input() datasource: any[] = [];
   @Input() valueField: string = "";
   @Input() displayField: string = "";
-  @Input() label: string = ""
+  @Input() label: string = "";
+  @Input() appearance: 'outline' | 'fill' = 'outline';
+
+  get _datasource(): any[] {
+    return this.datasource;
+  }
+  set _datasource(data: any[]) {
+    this._datasource = data;
+  }
 }

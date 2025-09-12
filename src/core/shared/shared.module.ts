@@ -5,12 +5,16 @@ import { MatModules } from '../mat-modules';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { CsSetupComponent } from './cs-setup/cs-setup.component';
 import { CsSelectComponent } from './cs-select/cs-select.component';
+import { CsInputComponent } from './cs-input/cs-input.component';
+// import { CsButtonComponent } from './cs-button/cs-button.component';
 
 @NgModule({
   declarations: [
     CsAutocompleteComponent,
     CsSetupComponent,
-    CsSelectComponent
+    CsSelectComponent,
+    CsInputComponent,
+    // CsButtonComponent
   ],
   imports: [
     CommonModule,
@@ -19,9 +23,11 @@ import { CsSelectComponent } from './cs-select/cs-select.component';
   exports: [
     CsAutocompleteComponent,
     CsSetupComponent,
-    CsSelectComponent
+    CsSelectComponent,
+    CsInputComponent,
+    // CsButtonComponent
   ],
-    providers: [
+  providers: [
     {
       provide: STEPPER_GLOBAL_OPTIONS,
       useValue: {displayDefaultIndicatorType: false},
