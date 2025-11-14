@@ -33,9 +33,9 @@ export class SideNavComponent {
       case FormName.Inventry:
         this._router.navigate(['pages/inventory']);
       break;
-      case FormName.SalesOrder:
-        this._router.navigate(['pages/sales-order']);
-      break;
+      // case FormName.SalesOrder:
+      //   this._router.navigate(['pages/sales-order']);
+      // break;
       case FormName.Product:
         this._router.navigate(['pages/product']);
       break;

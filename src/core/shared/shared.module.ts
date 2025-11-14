@@ -6,6 +6,9 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { CsSetupComponent } from './cs-setup/cs-setup.component';
 import { CsSelectComponent } from './cs-select/cs-select.component';
 import { CsInputComponent } from './cs-input/cs-input.component';
+import { CsFormComponent } from './cs-form/cs-form.component';
+// import { CsDialogComponent } from './cs-dialog/cs-dialog.component';
+// import { DialogService } from '../services/dialog.service';
 // import { CsButtonComponent } from './cs-button/cs-button.component';
 
 @NgModule({
@@ -14,6 +17,8 @@ import { CsInputComponent } from './cs-input/cs-input.component';
     CsSetupComponent,
     CsSelectComponent,
     CsInputComponent,
+    CsFormComponent,
+    // CsDialogComponent
     // CsButtonComponent
   ],
   imports: [
@@ -25,6 +30,8 @@ import { CsInputComponent } from './cs-input/cs-input.component';
     CsSetupComponent,
     CsSelectComponent,
     CsInputComponent,
+    CsFormComponent,
+    // CsDialogComponent
     // CsButtonComponent
   ],
   providers: [
@@ -32,6 +39,7 @@ import { CsInputComponent } from './cs-input/cs-input.component';
       provide: STEPPER_GLOBAL_OPTIONS,
       useValue: {displayDefaultIndicatorType: false},
     },
+    // DialogService,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

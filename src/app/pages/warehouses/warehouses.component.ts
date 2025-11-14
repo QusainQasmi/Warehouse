@@ -13,6 +13,7 @@ export class WarehousesComponent {
 
   model: any = {};
   _data: any[] = [];
+  isLoading: boolean = false;
   columns: CsGridColumn[] = [
     { key: 'warehouseId', label: 'S.No', sticky: true, sortable: true},
     { key: 'name', label: 'Name', sticky: false, sortable: true},
@@ -21,15 +22,7 @@ export class WarehousesComponent {
     { key: 'country', label: 'Country', sticky: false, sortable: false}
   ];
   
-  constructor(public _service: WarehouseService ){
-    this.data();
-  }
-
-  async data(){
-    (await this._service.getAll()).subscribe((data: any) => {
-      this._data = data;
-    });
-  }
+  constructor(){}
 
   ngOnInit(){}
 }

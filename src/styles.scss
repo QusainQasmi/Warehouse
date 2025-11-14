@@ -22,6 +22,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background: #11335d !important;
 }
 
+.h-100{
+    height: 100vh !important;
+}
+
 .txt-clr-blue {
     color: #11335d !important;
 }
@@ -30,6 +34,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: red !important;
 }
 
+.loading{
+    font-size: 40px !important;
+    width: 40px !important;
+    height: 40px !important;
+}
+
 .pointer {
-  cursor: pointer;
+  cursor: pointer !important;
+}
+
+.spin {
+  animation: spin 1s linear infinite !important;
+  color: #11335d !important;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

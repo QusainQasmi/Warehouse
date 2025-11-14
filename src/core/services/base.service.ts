@@ -1,6 +1,9 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { environment } from '../../../environment';
+import { catchError, map } from 'rxjs/operators';
+import { firstValueFrom, Observable, of } from 'rxjs';
+import { ApiResponse } from '../ApiResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +20,16 @@ export class BaseService {
     this.controllerName = _controllerName;
   }
 
-  async getData<T>(methodName: string) {
-    return await this.http.get<T>(`${this.baseUrl}${this.controllerName}/${methodName}`);
-  }  
+  async getData<T>(methodName: string): Promise<ApiResponse<T>> {
+    try {
+      const response = await firstValueFrom(this.http.get<T>(`${this.baseUrl}${this.controllerName}/${methodName}`).pipe(
+        map(data => this.handleSuccess<T>(data)),
+        catchError((err) => this.handleError<T>(err))));
+      return response;
+    } catch (err: any) {
+      return new ApiResponse<T>(false, undefined, err.message);
+    }
+  } 
 
   async get<T>(methodName: string, params?: any) {
     return await this.http.get<T>(`${this.baseUrl}${this.controllerName}/${methodName}`, { params });
@@ -39,5 +49,13 @@ export class BaseService {
 
   async delete<T>(methodName: string, id: number) {
     return await this.http.delete<T>(`${this.baseUrl}${this.controllerName}/${methodName}/${id}`);
+  }
+
+  private handleSuccess<T>(data: T): ApiResponse<T> {
+    return new ApiResponse<T>(true, data, "", 200);
+  }
+
+  private handleError<T>(error: HttpErrorResponse): Observable<ApiResponse<T>> {
+    return of(new ApiResponse<T>(false, undefined, error.message, error.status));
   }
 }

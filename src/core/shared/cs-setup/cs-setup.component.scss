@@ -1,7 +1,7 @@
 .table-container {
   margin: 20px;
   background: #fff;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   overflow: hidden;
 }
@@ -12,6 +12,7 @@
   font-weight: 600;
   font-size: 14px;
   text-transform: uppercase;
+  padding: 12px 8px !important;
 }
 
 .mat-mdc-cell {
