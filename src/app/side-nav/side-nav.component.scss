@@ -1,25 +1,53 @@
-.side-container{
-    height: 100vh !important;
-    background: white !important;
+.side-container {
+  height: 100vh !important;
+  background: #f9f9f9 !important;
 }
 
 .side-panel {
-    width: 230px !important;
+  width: 230px !important;
+  background-color: #11335d; // primary theme color
+  color: #ffffff;
+
+  .logo-container {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 20px;
+
+    .company-title {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+  }
+
+  .menu-container {
+    .menu-item {
+      padding: 10px 12px;
+      border-radius: 6px;
+      margin-bottom: 6px;
+      cursor: pointer;
+      transition: 0.2s;
+      font-weight: 500;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.15);
+      }
+    }
+  }
 }
 
-.action-btn{
-    position: fixed;
-    top: 100px;
-    z-index: 2000;
-    opacity: 1;
-    background: black;
-    border-radius: 50%;
-    margin-left: -15px;
-}
+.action-btn {
+  position: fixed;
+  top: 100px;
+  z-index: 2000;
+  opacity: 1;
+  background: #11335d;
+  color: #fff;
+  border-radius: 50%;
+  margin-left: -15px;
+  transition: 0.2s;
 
-.company-title{
-    text-transform: uppercase !important;
-    letter-spacing: 2px !important;
-    font-size: 20px !important;
-    border-bottom: 2px solid white !important;
+  &:hover {
+    background: #0e2b4c;
+  }
 }

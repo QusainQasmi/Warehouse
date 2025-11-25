@@ -7,8 +7,8 @@ import { CsSetupComponent } from './cs-setup/cs-setup.component';
 import { CsSelectComponent } from './cs-select/cs-select.component';
 import { CsInputComponent } from './cs-input/cs-input.component';
 import { CsFormComponent } from './cs-form/cs-form.component';
-// import { CsDialogComponent } from './cs-dialog/cs-dialog.component';
-// import { DialogService } from '../services/dialog.service';
+import { CsDialogComponent } from './cs-dialog/cs-dialog.component';
+import { DialogService } from '../services/dialog.service';
 // import { CsButtonComponent } from './cs-button/cs-button.component';
 
 @NgModule({
@@ -18,7 +18,7 @@ import { CsFormComponent } from './cs-form/cs-form.component';
     CsSelectComponent,
     CsInputComponent,
     CsFormComponent,
-    // CsDialogComponent
+    CsDialogComponent
     // CsButtonComponent
   ],
   imports: [
@@ -31,7 +31,7 @@ import { CsFormComponent } from './cs-form/cs-form.component';
     CsSelectComponent,
     CsInputComponent,
     CsFormComponent,
-    // CsDialogComponent
+    CsDialogComponent
     // CsButtonComponent
   ],
   providers: [
