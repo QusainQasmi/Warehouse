@@ -1,11 +1,3 @@
-export enum FormName {
-    Warehouses = 1,
-    Inventry,
-    SalesOrder,
-    Product,
-    Location,
-    Customer,
-}
 
 export enum ElementType {
     Autocomplete = 1,
@@ -17,12 +9,19 @@ export enum ElementType {
     Checkbox,
     Chip,
 }
+export enum FormName {
+  Warehouses = 'Warehouses',
+  WarehouseForm = 'WarehouseForm',
+  Inventory = 'Inventory',
+  Product = 'Product',
+  Customer = 'Customer',
+  Location = 'Location',
+}
 
-export const FormList: any[] = [
- { name: 'Warehouses', value: FormName.Warehouses },
- { name: 'Inventry', value: FormName.Inventry },
-//  { name: 'Sales Order', value: FormName.SalesOrder },
- { name: 'Product', value: FormName.Product },
- { name: 'Location', value: FormName.Location },
- { name: 'Customer', value: FormName.Customer }
+export const FormList = [
+  { name: 'Warehouses', value: FormName.Warehouses },
+  { name: 'Inventory', value: FormName.Inventory },
+  { name: 'Products', value: FormName.Product },
+  { name: 'Customers', value: FormName.Customer },
+  { name: 'Locations', value: FormName.Location },
 ];

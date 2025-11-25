@@ -1,23 +1,87 @@
-.table-container {
-  margin: 20px;
-  background: #fff;
-  border-radius: 4px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+
+  input {
+    border: 1px solid #cfcfcf;
+    border-radius: 6px;
+    padding: 6px 10px;
+    width: 200px;
+    font-size: 0.95rem;
+    &:focus {
+      outline: none;
+      border-color: #11335d;
+    }
+  }
 }
 
-.mat-mdc-header-cell {
-  background-color: #1976d2 !important;
-  color: white !important;
-  font-weight: 600;
-  font-size: 14px;
-  text-transform: uppercase;
-  padding: 12px 8px !important;
+.table-wrapper {
+  overflow-x: auto;
+  .mat-mdc-table {
+    background-color: #11335d !important;
+  }
+  .cs-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th.mat-header-cell {
+      background-color: #ff7300 !important;
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 12px 8px;
+    }
+
+    td.mat-cell {
+      padding: 12px 8px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .odd-row {
+      background-color: #f5f8ff;
+    }
+
+    .even-row {
+      background-color: #ffffff;
+    }
+
+    tr.mat-row {
+      color: #0088ff;
+    }
+
+    tr.mat-row:hover {
+      background-color: #e0e6f2;
+    }
+  }
 }
 
-.mat-mdc-cell {
-  background-color: #ffffff;
-  color: #333;
-  font-size: 14px;
-  padding: 12px 8px;
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #11335d;
+
+  .spin {
+    margin-right: 8px;
+    animation: spin 1s linear infinite;
+  }
+}
+
+.empty-container {
+  padding: 20px;
+  text-align: center;
+  color: #777;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
