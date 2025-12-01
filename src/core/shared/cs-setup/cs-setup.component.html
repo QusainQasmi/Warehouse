@@ -1,16 +1,14 @@
 <div class="cs-setup-container p-3">
   <!-- Top bar: Add + Filter -->
   <div class="top-bar">
-    <button class="btn primary" (click)="openFormDialog()">
-      <mat-icon>add</mat-icon> Add
-    </button>
-
-    <input
-      type="text"
-      placeholder="Search..."
-      [(ngModel)]="filterValue"
-      (input)="applyFilter(filterValue)"
-    />
+    <p class="setup-title">{{ title }}</p>
+    <div class="d-flex align-items-center">
+      <input type="text" placeholder="Search..." [(ngModel)]="filterValue" (input)="applyFilter(filterValue)"
+        class="mx-2" />
+      <button mat-mini-fab (click)="openFormDialog()" matTooltip="Add New Record" class="add-btn">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
   </div>
 
   <!-- Table -->
@@ -30,44 +28,36 @@
       </ng-container>
       <!-- Dynamic Columns -->
       <ng-container *ngFor="let col of columns" [matColumnDef]="col.key">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          [mat-sort-header]="col.sortable ? col.key : ''"
-        >
+        <th mat-header-cell *matHeaderCellDef [mat-sort-header]="col.sortable ? col.key : ''">
           {{ col.label }}
         </th>
-        <td mat-cell *matCellDef="let element">
+        <td mat-cell *matCellDef="let element" class="txt-clr-black">
           {{
-            col?.isDate
-              ? (element[col.key] | date : "dd-MMM-yyyy")
-              : element[col.key]
+            col?.isDate ? (element[col.key] | date : "dd-MMM-yyyy") :
+            col?.isNumber ? (element[col.key] | number: '1.2-2') :
+            element[col.key]
           }}
         </td>
       </ng-container>
 
       <!-- Header & Row Definitions -->
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr
-        mat-row
-        *matRowDef="let row; columns: displayedColumns"
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"
         [class.odd-row]="dataSource.data.indexOf(row) % 2 === 0"
-        [class.even-row]="dataSource.data.indexOf(row) % 2 === 1"
-      ></tr>
+        [class.even-row]="dataSource.data.indexOf(row) % 2 === 1"></tr>
     </table>
 
-    <!-- Loading -->
-    <div class="loading-container" *ngIf="isLoading">
+    @if (isLoading) {
+    <div class="loading-container">
       <mat-icon class="spin">refresh</mat-icon>
       Loading...
     </div>
+    }
 
-    <!-- Empty State -->
-    <div
-      class="empty-container"
-      *ngIf="!isLoading && dataSource.data.length === 0"
-    >
+    @if (!isLoading && dataSource.data.length === 0) {
+    <div class="empty-container">
       No items found.
     </div>
+    }
   </div>
 </div>

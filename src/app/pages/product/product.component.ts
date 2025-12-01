@@ -14,7 +14,7 @@ export class ProductComponent {
     { key: 'sku', label: 'Product No', sticky: false, sortable: true},
     { key: 'name', label: 'Product Name', sticky: false, sortable: false},
     { key: 'description', label: 'Description', sticky: false, sortable: false},
-    { key: 'unitPrice', label: 'Price', sticky: false, sortable: false},
+    { key: 'unitPrice', label: 'Price', sticky: false, sortable: false, isNumber: true},
     { key: 'createdAt', label: 'Created Date', sticky: false, sortable: false, isDate: true},
   ];
 }

@@ -11,8 +11,6 @@ import { PagesModule } from './pages/pages.module';
 })
 
 export class AppComponent {
-  
-  title = 'WMS';
 
   constructor(){}
 

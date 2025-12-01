@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 
   input {
     border: 1px solid #cfcfcf;
@@ -10,6 +10,7 @@
     padding: 6px 10px;
     width: 200px;
     font-size: 0.95rem;
+
     &:focus {
       outline: none;
       border-color: #11335d;
@@ -17,11 +18,19 @@
   }
 }
 
+::ng-deep.setup-title {
+  color: black !important;
+  font-size: 25px;
+  margin: 0px !important;
+}
+
 .table-wrapper {
   overflow-x: auto;
+
   .mat-mdc-table {
     background-color: #11335d !important;
   }
+
   .cs-table {
     width: 100%;
     border-collapse: collapse;
@@ -77,10 +86,22 @@
   color: #777;
 }
 
+.add-btn {
+  background: #11335d !important;
+  color: #fff !important;
+  border-radius: 50% !important;
+  transition: 0.2s !important;
+
+  &:hover {
+    background: #0e2b4c !important;
+  }
+}
+
 @keyframes spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

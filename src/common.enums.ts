@@ -8,7 +8,9 @@ export enum ElementType {
     Date,
     Checkbox,
     Chip,
+    Tab,
 }
+
 export enum FormName {
   Warehouses = 'Warehouses',
   WarehouseForm = 'WarehouseForm',

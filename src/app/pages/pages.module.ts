@@ -9,8 +9,10 @@ import { CustomerComponent } from './customer/customer.component';
 import { LocationComponent } from './location/location.component';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../core/shared/shared.module';
+import { WarehousesComponent } from './warehouses/warehouses.component';
 
 export const routes: Routes = [
+  { path: 'warehouse', component: WarehousesComponent },
   { path: 'sales-order', component: SalesOrderComponent },
   { path: 'inventory', component: InventoryComponent },
   { path: 'product', component: ProductComponent },
@@ -26,6 +28,7 @@ export const routes: Routes = [
     ProductComponent,
     CustomerComponent,
     LocationComponent,
+    WarehousesComponent
   ],
 
   imports: [
@@ -42,6 +45,7 @@ export const routes: Routes = [
     ProductComponent,
     CustomerComponent,
     LocationComponent,
+    WarehousesComponent
   ],
 })
 export class PagesModule {}

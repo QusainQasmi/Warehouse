@@ -1,33 +1,33 @@
+<!-- <h2 >{{ data && data.title ? data.title : 'Dialog' }}</h2> -->
+<div mat-dialog-title class="dialog-title">
+    <p>{{ data && data.title }}</p>
+    <button mat-icon-button (click)="dialogRef.close(dialogRef)">
+      <mat-icon>close</mat-icon>
+    </button>
+</div>
 
-    <!-- <h2 mat-dialog-title>{{ data?.title || 'Dialog' }}</h2> -->
+<mat-dialog-content>
+  <ng-container *ngIf="data && data.elements">
+    <form #form="ngForm">
+      <div *ngFor="let key of getKeys(data.elements)">
+        <mat-form-field appearance="fill" style="width:100%">
+          <mat-label>{{ key }}</mat-label>
+          <input matInput [(ngModel)]="data.model[key]" name="{{key}}" />
+        </mat-form-field>
+      </div>
+    </form>
+  </ng-container>
 
-    <!-- <mat-dialog-content> -->
-      <!-- Form / data display -->
-      <!-- <ng-container *ngIf="data?.formData">
-        <form #form="ngForm">
-          <div *ngFor="let key of getKeys(data.formData)">
-            <mat-form-field appearance="fill" style="width:100%">
-              <mat-label>{{ key }}</mat-label>
-              <input matInput [(ngModel)]="data.formData[key]" name="{{key}}" />
-            </mat-form-field>
-          </div>
-        </form>
-      </ng-container> -->
+  <p *ngIf="data && data.content">{{ data.content }}</p>
 
-      <!-- Static message -->
-      <!-- <p *ngIf="data?.content">{{ data.content }}</p> -->
+  <ng-container *ngIf="data && data.component">
+    <ng-container *ngComponentOutlet="data.component"></ng-container>
+  </ng-container>
+</mat-dialog-content>
 
-      <!-- Custom component -->
-      <!-- <ng-container *ngIf="data?.component">
-        <ng-container *ngComponentOutlet="data.component"></ng-container>
-      </ng-container>
-    </mat-dialog-content> -->
-
-    <!-- <mat-dialog-actions align="end">
-      <button *ngFor="let btn of data?.buttons"
-              mat-raised-button
-              [color]="btn.color || 'primary'"
-              (click)="buttonClick(btn)">
-        {{ btn.text }}
-      </button>
-    </mat-dialog-actions> -->
+<mat-dialog-actions align="end">
+  <button *ngFor="let btn of data.buttons" mat-raised-button [color]="btn.color || 'primary'"
+    (click)="buttonClick(btn)">
+    {{ btn.text }}
+  </button>
+</mat-dialog-actions>

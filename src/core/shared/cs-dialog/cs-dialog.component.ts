@@ -10,17 +10,16 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 export class CsDialogComponent {
 
-  constructor( private dialogRef: MatDialogRef<CsDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: CsDialogData ) {}
+  constructor( public dialogRef: MatDialogRef<CsDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: CsDialogData ) {}
 
   getKeys(obj: any) {
     return obj ? Object.keys(obj) : [];
   }
 
   buttonClick(btn: any) {
-    if(btn.action){
-      btn.action(this.data.formData);
-    }
-    this.dialogRef.close(this.data.formData);
+    if(btn.action) return btn.action({model: this.data.model, ref: this.dialogRef});
+  
+    this.dialogRef.close(this.data.model);
   }
 }
 
@@ -28,12 +27,13 @@ export class CsDialogComponent {
 export interface CsDialogData {
   title?: string;
   content?: any;
+  model?: any;
+  elements?: [];
+  component?: any;
+  width?: string;
   buttons?: {
     text: string;
     color?: 'primary' | 'warn' | 'accent';
     action?: any;
   }[];
-  formData?: any;
-  component?: any;
-  width?: string;
 }

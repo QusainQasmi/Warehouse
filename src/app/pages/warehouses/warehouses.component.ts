@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { WarehouseService } from '../../services/warehouse.service';
 import { CsGridColumn } from '../../../core/shared/cs-setup/cs-setup.component';
 
 @Component({
@@ -11,9 +10,6 @@ import { CsGridColumn } from '../../../core/shared/cs-setup/cs-setup.component';
 
 export class WarehousesComponent {
 
-  model: any = {};
-  _data: any[] = [];
-  isLoading: boolean = false;
   columns: CsGridColumn[] = [
     { key: 'warehouseId', label: 'S.No', sticky: true, sortable: true},
     { key: 'name', label: 'Name', sticky: false, sortable: true},
@@ -23,6 +19,4 @@ export class WarehousesComponent {
   ];
   
   constructor(){}
-
-  ngOnInit(){}
 }
