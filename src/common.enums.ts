@@ -1,14 +1,13 @@
 
 export enum ElementType {
-    Autocomplete = 1,
-    Select,
-    Input,
-    Button,
-    RadioButton,
-    Date,
-    Checkbox,
-    Chip,
-    Tab,
+    Autocomplete = "autocomplete",
+    Select = "select",
+    Input = "input", 
+    Button = "button",
+    RadioButton = "radiobutton",
+    Date = "date",
+    Checkbox = "checkbox",
+    Chip = "chip",
 }
 
 export enum FormName {

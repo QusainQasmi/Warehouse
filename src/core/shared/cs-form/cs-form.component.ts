@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'cs-form',
@@ -8,6 +8,9 @@ import { Component } from '@angular/core';
 })
 
 export class CsFormComponent {
+
+  @Input() elements: FromElement[] = [];
+  @Input() model: any = {};
 
 }
 
@@ -23,4 +26,5 @@ export interface FromElement {
   service?: string;
   requiredIf?: (model: any) => boolean;
   disabledIf?: (model: any) => boolean;
+  appearance?: string;
 }

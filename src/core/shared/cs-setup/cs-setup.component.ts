@@ -18,6 +18,7 @@ import { CsDialogComponent } from '../cs-dialog/cs-dialog.component';
 import { SetupService } from '../../services/setup.service';
 import { DialogService } from '../../services/dialog.service';
 import { MatDialogConfig } from '@angular/material/dialog';
+import { FromElement } from '../cs-form/cs-form.component';
 
 @Component({
   selector: 'cs-setup',
@@ -30,6 +31,8 @@ export class CsSetupComponent implements OnChanges, AfterViewInit, OnDestroy {
   @Input() columns: CsGridColumn[] = [];
   @Input() controllerName!: string;
   @Input() title: string = "";
+  @Input() width: string = "80vw";
+  @Input() elements: FromElement[] = [];
   displayedColumns: string[] = [];
   dataSource = new MatTableDataSource<any>([]);
   isLoading = false;
@@ -102,9 +105,9 @@ export class CsSetupComponent implements OnChanges, AfterViewInit, OnDestroy {
   async openFormDialog(row?: any): Promise<void> {
     const dialogRef = this._dialogService.open(CsDialogComponent, {
       title: row ? `Edit ${this.title}` : `Add ${this.title}`,
-      model: row ? row : null,
-      content: JSON.stringify(row),
-    }, undefined, '40vw');
+      model: row ? row : {},
+      elements: this.elements
+    }, undefined, this.width);
 
     const formResult = await lastValueFrom(from(dialogRef.afterClosed()));
 

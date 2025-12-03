@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { FromElement } from '../cs-form/cs-form.component';
 
 @Component({
   selector: 'cs-dialog',
@@ -23,12 +24,11 @@ export class CsDialogComponent {
   }
 }
 
-
 export interface CsDialogData {
   title?: string;
   content?: any;
   model?: any;
-  elements?: [];
+  elements?: FromElement[];
   component?: any;
   width?: string;
   buttons?: {

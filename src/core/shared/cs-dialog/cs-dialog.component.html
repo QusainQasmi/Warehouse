@@ -8,14 +8,7 @@
 
 <mat-dialog-content>
   <ng-container *ngIf="data && data.elements">
-    <form #form="ngForm">
-      <div *ngFor="let key of getKeys(data.elements)">
-        <mat-form-field appearance="fill" style="width:100%">
-          <mat-label>{{ key }}</mat-label>
-          <input matInput [(ngModel)]="data.model[key]" name="{{key}}" />
-        </mat-form-field>
-      </div>
-    </form>
+    <cs-form [elements]="data.elements" [model]="data.model"></cs-form>
   </ng-container>
 
   <p *ngIf="data && data.content">{{ data.content }}</p>

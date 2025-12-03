@@ -1,1 +1,13 @@
-<p>cs-form works!</p>
+<div class="row w-100 p-2">
+<ng-container *ngFor="let elem of elements">
+        @if(elem.elemType === "input"){
+            <div [class]="'col-' + elem.col">
+                <cs-input [csModel]="model[elem.key]" [label]="elem.label" appearance="outline"></cs-input>
+            </div>
+        } @else if (elem.elemType === "autocomplete") {
+            <!-- <cs-autocomplete [csModel]="model[elem.key]" [label]="elem.label" appearance="outline"></cs-autocomplete> -->
+        } @else {
+            
+        }    
+    </ng-container>
+</div>

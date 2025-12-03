@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CsGridColumn } from '../../../core/shared/cs-setup/cs-setup.component';
+import { FromElement } from '../../../core/shared/cs-form/cs-form.component';
+import { ElementType } from '../../../common.enums';
 
 @Component({
   selector: 'app-warehouses',
@@ -17,6 +19,30 @@ export class WarehousesComponent {
     { key: 'city', label: 'City', sticky: false, sortable: false},
     { key: 'country', label: 'Country', sticky: false, sortable: false}
   ];
+
+  elements: FromElement[] = [
+    {
+      col: 6,
+      key: 'name',
+      label: 'Name',
+      elemType: ElementType.Input,
+    },
+    {
+      col: 6,
+      key: 'address',
+      label: 'Address',
+      elemType: ElementType.Input,
+    },
+    {
+      col: 6,
+      key: 'city',
+      label: 'City',
+      elemType: ElementType.Autocomplete,
+      displayField: 'city',
+      valueField: 'city',
+      datasource: [],
+    },
+  ]
   
   constructor(){}
 }

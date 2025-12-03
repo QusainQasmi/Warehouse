@@ -3,6 +3,51 @@ body { margin: 0 !important; font-family: 'Roboto', 'Arial', sans-serif !importa
 
 // material styling
 
+.mdc-text-field__input {
+  color: #000 !important;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.mat-mdc-text-field-wrapper {
+  border-radius: 8px !important;
+  background: white !important;
+}
+
+.mat-mdc-floating-label {
+  color: #1a73e8 !important;
+}
+
+.mat-mdc-form-field.mat-focused .mat-mdc-floating-label {
+  color: #1a73e8 !important;
+}
+
+.mdc-notched-outline__leading,
+.mdc-notched-outline__notch,
+.mdc-notched-outline__trailing {
+  border-color: #c5d7ff !important;
+}
+
+.mat-mdc-form-field:hover 
+.mdc-notched-outline__leading,
+.mat-mdc-form-field:hover 
+.mdc-notched-outline__notch,
+.mat-mdc-form-field:hover 
+.mdc-notched-outline__trailing {
+  border-color: #1a73e8 !important;
+}
+
+.mat-mdc-form-field.mat-focused 
+.mdc-notched-outline__leading,
+.mat-mdc-form-field.mat-focused 
+.mdc-notched-outline__notch,
+.mat-mdc-form-field.mat-focused 
+.mdc-notched-outline__trailing {
+  border-color: #1a73e8 !important;
+}
+
 .mat-mdc-dialog-container .mdc-dialog__surface {
   background: white !important;
   color: black !important;
