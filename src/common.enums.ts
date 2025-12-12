@@ -17,6 +17,7 @@ export enum FormName {
   Product = 'Product',
   Customer = 'Customer',
   Location = 'Location',
+  Sales = 'Sales',
 }
 
 export const FormList = [
@@ -25,4 +26,5 @@ export const FormList = [
   { name: 'Products', value: FormName.Product },
   { name: 'Customers', value: FormName.Customer },
   { name: 'Locations', value: FormName.Location },
+  { name: 'Sales', value: FormName.Sales },
 ];

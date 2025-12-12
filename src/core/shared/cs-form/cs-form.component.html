@@ -5,7 +5,8 @@
                 <cs-input [csModel]="model[elem.key]" [label]="elem.label" appearance="outline"></cs-input>
             </div>
         } @else if (elem.elemType === "autocomplete") {
-            <!-- <cs-autocomplete [csModel]="model[elem.key]" [label]="elem.label" appearance="outline"></cs-autocomplete> -->
+            <cs-autocomplete [csModel]="model[elem.key]" [label]="elem.label" appearance="outline" [service]="elem.service" [datasource]="elem.datasource" [optionalDisplayField]="elem.optionalDisplayField"
+            [methodName]="elem.methodName" [displayField]="elem.displayField" [valueField]="elem.valueField" [disabledIf]="elem.disabledIf ? elem.disabledIf(model) : null"></cs-autocomplete>
         } @else {
             
         }    

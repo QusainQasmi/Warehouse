@@ -8,6 +8,7 @@ import {
   OnDestroy,
   TemplateRef,
   ChangeDetectorRef,
+  OnInit,
 } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
@@ -26,13 +27,21 @@ import { FromElement } from '../cs-form/cs-form.component';
   templateUrl: './cs-setup.component.html',
   styleUrls: ['./cs-setup.component.scss'],
 })
-export class CsSetupComponent implements OnChanges, AfterViewInit, OnDestroy {
+export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
 
   @Input() columns: CsGridColumn[] = [];
   @Input() controllerName!: string;
   @Input() title: string = "";
   @Input() width: string = "80vw";
-  @Input() elements: FromElement[] = [];
+  private _elements: FromElement[] = [];
+  @Input()
+  set elements(value: FromElement[]) {
+    this._elements = value;
+  }
+
+  get elements(): any[] {
+    return this._elements;
+  }
   displayedColumns: string[] = [];
   dataSource = new MatTableDataSource<any>([]);
   isLoading = false;
@@ -67,7 +76,7 @@ export class CsSetupComponent implements OnChanges, AfterViewInit, OnDestroy {
     }
   }
 
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.viewInitialized = true;

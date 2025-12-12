@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CsGridColumn } from '../../../core/shared/cs-setup/cs-setup.component';
 import { FromElement } from '../../../core/shared/cs-form/cs-form.component';
 import { ElementType } from '../../../common.enums';
+import { CityService } from '../../services/city.service';
 
 @Component({
   selector: 'app-warehouses',
@@ -12,37 +13,58 @@ import { ElementType } from '../../../common.enums';
 
 export class WarehousesComponent {
 
-  columns: CsGridColumn[] = [
-    { key: 'warehouseId', label: 'S.No', sticky: true, sortable: true},
-    { key: 'name', label: 'Name', sticky: false, sortable: true},
-    { key: 'address', label: 'Address', sticky: false, sortable: false},
-    { key: 'city', label: 'City', sticky: false, sortable: false},
-    { key: 'country', label: 'Country', sticky: false, sortable: false}
-  ];
+  constructor(public _cityService: CityService) {
+    this._cityService.setControllerName("City");
+  }
 
-  elements: FromElement[] = [
-    {
-      col: 6,
-      key: 'name',
-      label: 'Name',
-      elemType: ElementType.Input,
-    },
-    {
-      col: 6,
-      key: 'address',
-      label: 'Address',
-      elemType: ElementType.Input,
-    },
-    {
-      col: 6,
-      key: 'city',
-      label: 'City',
-      elemType: ElementType.Autocomplete,
-      displayField: 'city',
-      valueField: 'city',
-      datasource: [],
-    },
-  ]
-  
-  constructor(){}
+  columns: CsGridColumn[] = [
+    { key: 'warehouseId', label: 'S.No', sticky: true, sortable: true },
+    { key: 'name', label: 'Name', sticky: false, sortable: true },
+    { key: 'address', label: 'Address', sticky: false, sortable: false },
+    { key: 'city', label: 'City', sticky: false, sortable: false },
+    { key: 'country', label: 'Country', sticky: false, sortable: false }
+  ];
+  cityData: any[] = [];
+  elements: FromElement[] = [];
+
+  async getCountryData() {
+    const res = await this._cityService.getData("GetAllData");
+    if (!res.IsSuccess || !res.Data) return;
+    this.cityData = Array.isArray(res.Data) && res.Data?.length > 0 ? [...res.Data] : [];
+  }
+
+  ngOnInit() {
+    this.getCountryData();
+
+    setTimeout(() => {
+      this.elements = [
+        {
+          col: 12,
+          key: 'name',
+          label: 'Name',
+          elemType: ElementType.Input,
+        },
+        {
+          col: 6,
+          key: 'address',
+          label: 'Address',
+          elemType: ElementType.Input,
+        },
+        {
+          col: 6,
+          key: 'city',
+          label: 'City',
+          elemType: ElementType.Autocomplete,
+          displayField: 'cityName',
+          valueField: 'cityName',
+          datasource: this.cityData,
+          optionalDisplayField: 'countryName'
+        },
+      ];
+    }, 1000)
+  }
+
+  ngAfterViewInit() {
+
+  }
 }
