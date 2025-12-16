@@ -45,7 +45,7 @@ export class WarehousesComponent {
           elemType: ElementType.Input,
         },
         {
-          col: 6,
+          col: 12,
           key: 'address',
           label: 'Address',
           elemType: ElementType.Input,
@@ -59,6 +59,15 @@ export class WarehousesComponent {
           valueField: 'cityName',
           datasource: this.cityData,
           optionalDisplayField: 'countryName'
+        },
+        {
+          col: 6,
+          key: 'country',
+          label: 'Country',
+          elemType: ElementType.Autocomplete,
+          displayField: 'countryName',
+          valueField: 'countryName',
+          datasource: this.cityData,
         },
       ];
     }, 1000)

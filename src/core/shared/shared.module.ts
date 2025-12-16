@@ -9,6 +9,7 @@ import { CsInputComponent } from './cs-input/cs-input.component';
 import { CsFormComponent } from './cs-form/cs-form.component';
 import { CsDialogComponent } from './cs-dialog/cs-dialog.component';
 import { DialogService } from '../services/dialog.service';
+import { ɵEmptyOutletComponent } from "@angular/router";
 // import { CsButtonComponent } from './cs-button/cs-button.component';
 
 @NgModule({
@@ -23,8 +24,9 @@ import { DialogService } from '../services/dialog.service';
   ],
   imports: [
     CommonModule,
-    MatModules
-  ],
+    MatModules,
+    ɵEmptyOutletComponent
+],
   exports: [
     CsAutocompleteComponent,
     CsSetupComponent,

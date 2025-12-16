@@ -26,12 +26,12 @@ export class SideNavComponent {
 
   openPages(item: any) {
     const routesMap: Record<string, string> = {
-      [FormName.Warehouses]: 'pages/warehouse',
+      [FormName.Warehouses]: 'warehouse',
       // [FormName.Warehouses]: 'pages/warehouse', // sub-form
-      [FormName.Inventory]: 'pages/inventory',
-      [FormName.Product]: 'pages/product',
-      [FormName.Customer]: 'pages/customer',
-      [FormName.Location]: 'pages/location',
+      [FormName.Inventory]: 'inventory',
+      [FormName.Product]: 'product',
+      [FormName.Customer]: 'customer',
+      [FormName.Location]: 'location',
     };
 
     const route = routesMap[item?.value];

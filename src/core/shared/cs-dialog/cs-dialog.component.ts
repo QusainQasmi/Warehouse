@@ -13,14 +13,14 @@ export class CsDialogComponent {
 
   constructor( public dialogRef: MatDialogRef<CsDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: CsDialogData ) {}
 
-  getKeys(obj: any) {
-    return obj ? Object.keys(obj) : [];
-  }
-
   buttonClick(btn: any) {
     if(btn.action) return btn.action({model: this.data.model, ref: this.dialogRef});
   
     this.dialogRef.close(this.data.model);
+  }
+
+  onSave(){
+    
   }
 }
 

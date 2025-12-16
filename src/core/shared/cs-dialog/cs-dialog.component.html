@@ -1,14 +1,13 @@
-<!-- <h2 >{{ data && data.title ? data.title : 'Dialog' }}</h2> -->
 <div mat-dialog-title class="dialog-title">
-    <p>{{ data && data.title }}</p>
-    <button mat-icon-button (click)="dialogRef.close(dialogRef)">
-      <mat-icon>close</mat-icon>
-    </button>
+  <p>{{ data && data.title }}</p>
+  <button mat-icon-button [disableRipple]="true">
+    <mat-icon (click)="dialogRef.close(dialogRef)">close</mat-icon>
+  </button>
 </div>
 
-<mat-dialog-content>
+<mat-dialog-content class="w-100 py-2">
   <ng-container *ngIf="data && data.elements">
-    <cs-form [elements]="data.elements" [model]="data.model"></cs-form>
+    <cs-form [elements]="data.elements" class="d-flex justify-content-center" [model]="data.model"></cs-form>
   </ng-container>
 
   <p *ngIf="data && data.content">{{ data.content }}</p>
@@ -19,8 +18,15 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button *ngFor="let btn of data.buttons" mat-raised-button [color]="btn.color || 'primary'"
-    (click)="buttonClick(btn)">
-    {{ btn.text }}
-  </button>
+  <ng-container *ngIf="data && data.buttons; else defaultBtns">
+    <button *ngFor="let btn of data.buttons" mat-raised-button [color]="btn.color || 'primary'"
+      (click)="buttonClick(btn)">
+      {{ btn.text }}
+    </button>
+  </ng-container>
+  <ng-template #defaultBtns>
+    <button mat-raised-button class="btn" (click)="onSave()">
+      Submit
+    </button>
+  </ng-template>
 </mat-dialog-actions>
