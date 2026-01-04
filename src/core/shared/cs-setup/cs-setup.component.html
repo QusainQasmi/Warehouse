@@ -17,21 +17,23 @@
       <!-- Actions Column testing commit -->
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
-        <td mat-cell *matCellDef="let element">
-          <button class="btn small" (click)="openFormDialog(element)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button class="btn small danger" (click)="deleteItem(element)">
-            <mat-icon>delete</mat-icon>
-          </button>
+        <td mat-cell *matCellDef="let element" class="custom-row">
+          <div class="w-100 d-flex align-items-center">
+            <button class="btn small" (click)="openFormDialog(element)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button class="btn small danger" (click)="deleteItem(element)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
         </td>
       </ng-container>
       <!-- Dynamic Columns -->
       <ng-container *ngFor="let col of columns" [matColumnDef]="col.key">
-        <th mat-header-cell *matHeaderCellDef [mat-sort-header]="col.sortable ? col.key : ''">
+        <th mat-header-cell class="txt-ellipsis" *matHeaderCellDef [mat-sort-header]="col.sortable ? col.key : ''">
           {{ col.label }}
         </th>
-        <td mat-cell *matCellDef="let element" class="txt-clr-black">
+        <td mat-cell *matCellDef="let element" class="txt-clr-black custom-row">
           {{
             col?.isDate ? (element[col.key] | date : "dd-MMM-yyyy") :
             col?.isNumber ? (element[col.key] | number: '1.2-2') :

@@ -11,7 +11,7 @@ import { ApiResponse } from '../ApiResponse';
 export class BaseService {
 
   // protected http = inject(HttpClient);
-  protected baseUrl = environment.apiUrl;
+  protected baseUrl = environment.productionUrl;
   protected controllerName?: string;
 
   constructor(protected http: HttpClient) {}
