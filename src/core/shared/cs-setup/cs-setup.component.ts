@@ -245,10 +245,10 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
     }
   }
 
-  applyFilter(value: string) {
-    this.filterValue = value?.trim().toLowerCase() ?? '';
-    this.dataSource.filter = this.filterValue;
-  }
+  // applyFilter(value: string) {
+  //   this.filterValue = value?.trim().toLowerCase() ?? '';
+  //   this.dataSource.filter = this.filterValue;
+  // }
 
   get displayColumnKeys() {
     return this.displayedColumns;

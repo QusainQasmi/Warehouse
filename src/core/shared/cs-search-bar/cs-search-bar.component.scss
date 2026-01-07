@@ -1,0 +1,71 @@
+::ng-deep cs-search-bar {
+
+    .search-wrap {
+        width: 370px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  padding: 7px 20px;
+  border-radius: 60px;
+  border: 3px solid transparent;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(
+      120deg,
+      #11335d,
+      #2596be,
+      #006992,
+      #11335d
+    ) border-box;
+
+  background-size: 100% 100%, 300% 300%;
+  animation: moveBorder 5s linear infinite;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@keyframes moveBorder {
+  0% {
+    background-position: 0% 0%, 0% 50%;
+  }
+  100% {
+    background-position: 0% 0%, 300% 50%;
+  }
+}
+
+.search:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 20px rgba(0, 255, 213, 0.4);
+}
+
+.search:focus-within {
+  box-shadow: 0 0 30px rgba(77, 148, 255, 0.6);
+}
+
+.icon {
+  width: 26px;
+  height: 26px;
+  margin-right: 14px;
+  stroke: #11335d;
+  stroke-width: 2.5;
+  fill: none;
+  transition: transform 0.4s ease, stroke 0.4s ease;
+}
+
+.search:focus-within .icon {
+  stroke: #2460d7;
+  transform: rotate(360deg) scale(1.3);
+}
+
+input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  color: #000;
+}
+
+}

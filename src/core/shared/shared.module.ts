@@ -10,6 +10,7 @@ import { CsFormComponent } from './cs-form/cs-form.component';
 import { CsDialogComponent } from './cs-dialog/cs-dialog.component';
 import { DialogService } from '../services/dialog.service';
 import { ɵEmptyOutletComponent } from "@angular/router";
+import { CsSearchBarComponent } from './cs-search-bar/cs-search-bar.component';
 // import { CsButtonComponent } from './cs-button/cs-button.component';
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ɵEmptyOutletComponent } from "@angular/router";
     CsSelectComponent,
     CsInputComponent,
     CsFormComponent,
-    CsDialogComponent
+    CsDialogComponent,
+    CsSearchBarComponent
     // CsButtonComponent
   ],
   imports: [
@@ -33,7 +35,8 @@ import { ɵEmptyOutletComponent } from "@angular/router";
     CsSelectComponent,
     CsInputComponent,
     CsFormComponent,
-    CsDialogComponent
+    CsDialogComponent,
+    CsSearchBarComponent
     // CsButtonComponent
   ],
   providers: [

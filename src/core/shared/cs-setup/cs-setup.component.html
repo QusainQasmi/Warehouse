@@ -1,13 +1,25 @@
-<div class="cs-setup-container p-3">
+<div class="cs-setup-container p-2">
   <!-- Top bar: Add + Filter -->
   <div class="top-bar">
     <p class="setup-title">{{ title }}</p>
     <div class="d-flex align-items-center">
-      <input type="text" placeholder="Search..." [(ngModel)]="filterValue" (input)="applyFilter(filterValue)"
-        class="mx-2" />
-      <button mat-mini-fab (click)="openFormDialog()" matTooltip="Add New Record" class="add-btn">
-        <mat-icon>add</mat-icon>
-      </button>
+      <cs-search-bar *ngIf="dataSource && dataSource.data && dataSource.data.length > 0"
+         [datasource]="dataSource.data"></cs-search-bar>
+      <!-- <input type="text" placeholder="Search..." [(ngModel)]="filterValue" (input)="applyFilter(filterValue)"
+        class="mx-2" /> -->
+     <div class="btn-top">
+
+          <button mat-mini-fab (click)="openFormDialog()" matTooltip="Add New Record" class="add-btn">
+            <mat-icon>add</mat-icon>
+          </button>
+          <button mat-mini-fab  class="add-btn">
+            <mat-icon>person</mat-icon>
+          </button>
+          <button mat-mini-fab  class="add-btn">
+            <mat-icon>settings</mat-icon>
+          </button>
+        </div>
+      
     </div>
   </div>
 
@@ -19,7 +31,7 @@
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let element" class="custom-row">
           <div class="w-100 d-flex align-items-center">
-            <button class="btn small" (click)="openFormDialog(element)">
+           <button class="btn small" (click)="openFormDialog(element)">
               <mat-icon>edit</mat-icon>
             </button>
             <button class="btn small danger" (click)="deleteItem(element)">
