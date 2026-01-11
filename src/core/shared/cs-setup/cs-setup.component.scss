@@ -101,14 +101,11 @@
 }
 
 .add-btn {
-  background: #11335d !important;
-  color: #fff !important;
-  border-radius: 50% !important;
-  transition: 0.2s !important;
-
-  &:hover {
-    background: #0e2b4c !important;
-  }
+    background: #9b9b9b00 !important;
+    color: #11335d !important;
+    border-radius: 50% !important;
+    transition: 0.2s !important;
+    border: 2px solid #11335d !important;
 }
 
 @keyframes spin {

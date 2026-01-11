@@ -34,6 +34,7 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
   @Input() title: string = "";
   @Input() width: string = "80vw";
   private _elements: FromElement[] = [];
+  duplicateData: any[] = [];
   @Input()
   set elements(value: FromElement[]) {
     this._elements = value;
@@ -54,6 +55,7 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
     private _setupService: SetupService,
     private _dialogService: DialogService,
     private _snack: MatSnackBar,
+    private _detectChanges: ChangeDetectorRef
   ) {}
 
   private destroy$ = new Subject<void>();
@@ -93,6 +95,7 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
 
       if (result?.IsSuccess) {
         this.dataSource.data = Array.isArray(result.Data) ? result.Data : [];
+        this.duplicateData = this.dataSource.data; 
         this._snack.open('Loaded data', 'OK', { duration: 1200 });
       } else {
         this._snack.open('Using fallback data (server returned error)', 'OK', {
@@ -108,6 +111,14 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
       try {
         if (this.paginator) this.paginator.firstPage();
       } catch {}
+    }
+  }
+
+  changeDatasource(event: any){
+    if(event?.length > 0){
+      this.dataSource.data = event;
+    } else {
+      this.dataSource.data = this.duplicateData;
     }
   }
 

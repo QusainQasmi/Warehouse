@@ -1,13 +1,13 @@
 ::ng-deep cs-search-bar {
 
     .search-wrap {
-        width: 370px;
+        width: 320px;
 }
 
 .search {
   display: flex;
   align-items: center;
-  padding: 7px 20px;
+  padding: 2px 15px;
   border-radius: 60px;
   border: 3px solid transparent;
   background:
@@ -18,12 +18,13 @@
       #2596be,
       #006992,
       #11335d
-    ) border-box;
+    ) 
+    border-box;
 
   background-size: 100% 100%, 300% 300%;
-  animation: moveBorder 5s linear infinite;
+  // animation: moveBorder 5s linear infinite;
 
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  // transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 @keyframes moveBorder {
@@ -35,29 +36,29 @@
   }
 }
 
-.search:hover {
-  transform: scale(1.06);
-  box-shadow: 0 0 20px rgba(0, 255, 213, 0.4);
-}
+// .search:hover {
+//   transform: scale(1.06);
+//   // box-shadow: 0 0 20px rgba(0, 255, 213, 0.4);
+// }
 
-.search:focus-within {
-  box-shadow: 0 0 30px rgba(77, 148, 255, 0.6);
-}
+// .search:focus-within {
+//   box-shadow: 0 0 30px rgba(77, 148, 255, 0.6);
+// }
 
 .icon {
-  width: 26px;
-  height: 26px;
-  margin-right: 14px;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
   stroke: #11335d;
   stroke-width: 2.5;
   fill: none;
   transition: transform 0.4s ease, stroke 0.4s ease;
 }
 
-.search:focus-within .icon {
-  stroke: #2460d7;
-  transform: rotate(360deg) scale(1.3);
-}
+// .search:focus-within .icon {
+//   stroke: #2460d7;
+//   transform: rotate(360deg) scale(1.3);
+// }
 
 input {
   width: 100%;

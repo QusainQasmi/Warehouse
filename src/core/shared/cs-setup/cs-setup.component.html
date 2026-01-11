@@ -3,10 +3,9 @@
   <div class="top-bar">
     <p class="setup-title">{{ title }}</p>
     <div class="d-flex align-items-center">
-      <cs-search-bar *ngIf="dataSource && dataSource.data && dataSource.data.length > 0"
-         [datasource]="dataSource.data"></cs-search-bar>
-      <!-- <input type="text" placeholder="Search..." [(ngModel)]="filterValue" (input)="applyFilter(filterValue)"
-        class="mx-2" /> -->
+      <cs-select ></cs-select>
+      <cs-search-bar *ngIf="duplicateData && duplicateData.length > 0"
+         [datasource]="duplicateData" (datasourceChange)="changeDatasource($event)"></cs-search-bar>
      <div class="btn-top">
 
           <button mat-mini-fab (click)="openFormDialog()" matTooltip="Add New Record" class="add-btn">
@@ -15,11 +14,19 @@
           <button mat-mini-fab  class="add-btn">
             <mat-icon>person</mat-icon>
           </button>
+          <button mat-mini-fab matTooltip="Contach Support" (click)="openFormDialog()" class="add-btn">
+            <mat-icon>contact_support</mat-icon>
+          </button>
           <button mat-mini-fab  class="add-btn">
             <mat-icon>settings</mat-icon>
           </button>
         </div>
       
+      <!-- <input type="text" placeholder="Search..." [(ngModel)]="filterValue" (input)="applyFilter(filterValue)"
+        class="mx-2" /> -->
+      <!-- <button mat-mini-fab (click)="openFormDialog()" matTooltip="Add New Record" class="add-btn">
+        <mat-icon>add</mat-icon> -->
+      <!-- </button>    -->
     </div>
   </div>
 
