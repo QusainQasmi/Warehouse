@@ -27,50 +27,46 @@ export class WarehousesComponent {
   cityData: any[] = [];
   elements: FromElement[] = [];
 
-  async getCountryData() {
-    const res = await this._cityService.getData("GetAllData");
-    if (!res.IsSuccess || !res.Data) return;
-    this.cityData = Array.isArray(res.Data) && res.Data?.length > 0 ? [...res.Data] : [];
-  }
-
   ngOnInit() {
-    this.getCountryData();
-
-    setTimeout(() => {
-      this.elements = [
-        {
-          col: 12,
-          key: 'name',
-          label: 'Name',
-          elemType: ElementType.Input,
-        },
-        {
-          col: 12,
-          key: 'address',
-          label: 'Address',
-          elemType: ElementType.Input,
-        },
-        {
-          col: 6,
-          key: 'city',
-          label: 'City',
-          elemType: ElementType.Autocomplete,
-          displayField: 'cityName',
-          valueField: 'cityName',
-          datasource: this.cityData,
-          optionalDisplayField: 'countryName'
-        },
-        {
-          col: 6,
-          key: 'country',
-          label: 'Country',
-          elemType: ElementType.Autocomplete,
-          displayField: 'countryName',
-          valueField: 'countryName',
-          datasource: this.cityData,
-        },
-      ];
-    }, 1000)
+    this.elements = [
+      {
+        col: 12,
+        key: 'name',
+        label: 'Name',
+        elemType: ElementType.Input,
+      },
+      {
+        col: 12,
+        key: 'address',
+        label: 'Address',
+        elemType: ElementType.Input,
+      },
+      {
+        col: 6,
+        key: 'city',
+        label: 'City',
+        elemType: ElementType.Autocomplete,
+        displayField: 'name',
+        valueField: 'id',
+        datasource: [
+          { name: 'Moin', id: 1 }
+        ]
+        // service: this._cityService,
+        // controllerName: 'City',
+        // methodName: 'GetAllData'
+      },
+      {
+        col: 6,
+        key: 'country',
+        label: 'Country',
+        elemType: ElementType.Autocomplete,
+        displayField: 'countryName',
+        valueField: 'countryName',
+        service: this._cityService,
+        controllerName: 'City',
+        methodName: 'GetAllData'
+      },
+    ];
   }
 
   ngAfterViewInit() {

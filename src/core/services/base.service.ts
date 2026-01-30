@@ -1,61 +1,107 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpParams } from '@angular/common/http';
+import { lastValueFrom } from 'rxjs';
 import { environment } from '../../../environment';
-import { catchError, map } from 'rxjs/operators';
-import { firstValueFrom, Observable, of } from 'rxjs';
 import { ApiResponse } from '../ApiResponse';
+import { HttpHelper } from '../httpHelper';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class BaseService {
+export abstract class BaseService {
 
-  // protected http = inject(HttpClient);
   protected baseUrl = environment.productionUrl;
-  protected controllerName?: string;
+  protected controllerName: string = "";
 
-  constructor(protected http: HttpClient) {}
-
-  protected setController(_controllerName: string) {
-    this.controllerName = _controllerName;
+  constructor(protected controller: string) {
+    if (controller)
+      this.controllerName = controller;
   }
 
-  async getData<T>(methodName: string): Promise<ApiResponse<T>> {
+  protected buildUrl(action?: string) {
+    return action ? `${this.baseUrl}${this.controllerName}/${action}`
+      : `${this.baseUrl}${this.controllerName}`;
+  }
+
+  protected buildParams(params?: { name: string; value: any }[]) {
+    let httpParams = new HttpParams();
+    params?.forEach(p => {
+      if (p.value !== undefined && p.value !== null) {
+        httpParams = httpParams.append(p.name, p.value);
+      }
+    });
+    return httpParams;
+  }
+
+  protected async get<T>(action?: string, params?: any[]){
     try {
-      const response = await firstValueFrom(this.http.get<T>(`${this.baseUrl}${this.controllerName}/${methodName}`).pipe(
-        map(data => this.handleSuccess<T>(data)),
-        catchError((err) => this.handleError<T>(err))));
-      return response;
+      const res: ApiResponse<T> = await lastValueFrom(
+        HttpHelper.get(this.buildUrl(action), this.buildParams(params))
+      );
+      return { IsSuccess: true, Data: res, Message: "Success" };
     } catch (err: any) {
-      return new ApiResponse<T>(false, undefined, err.message);
+      console.error('HTTP Error:', err);
+      return { IsSuccess: false, Data: null, Errors: err || 'Network Error' };
     }
-  } 
-
-  async get<T>(methodName: string, params?: any) {
-    return await this.http.get<T>(`${this.baseUrl}${this.controllerName}/${methodName}`, { params });
   }
 
-  async getById<T>(methodName: string, id: any){
-    return await this.http.get<T>(`${this.baseUrl}${this.controllerName}/${methodName}/${id}`);
+  protected async post<T>(action: string, body: any) {
+    try {
+      const res: any = await lastValueFrom(
+        HttpHelper.post(this.buildUrl(action), body)
+      );
+      return { IsSuccess: true, Data: res, Message: "Success" };
+    } catch (err: any) {
+      console.error('HTTP POST Error:', err);
+      return { success: false, data: null, Errors: err || 'Network Error' };
+    }
   }
 
-  async post<T>(methodName: string, body: any) {
-    return await this.http.post<T>(`${this.baseUrl}${this.controllerName}/${methodName}`, body);
+  protected async put<T>(action: string, body: any) {
+    try {
+      const res: any = await lastValueFrom(
+        HttpHelper.put(this.buildUrl(action), body)
+      );
+      return { IsSuccess: true, Data: res, Message: "Success" };
+    } catch (err: any) {
+      console.error('HTTP PUT Error:', err);
+      return { success: false, data: null, Errors: err || 'Network Error' };
+    }
   }
 
-  async put<T>(methodName: string, body: any) {
-    return await this.http.put<T>(`${this.baseUrl}${this.controllerName}/${methodName}`, body);
+  protected async delete<T>(action: string) {
+    try {
+      const res: any = await lastValueFrom(
+        HttpHelper.delete(this.buildUrl(action))
+      );
+      return { IsSuccess: true, Data: res, Message: "Success" };
+    } catch (err: any) {
+      console.error('HTTP DELETE Error:', err);
+      return { success: false, data: null, Errors: err || 'Network Error' };
+    }
   }
 
-  async delete<T>(methodName: string, id: number) {
-    return await this.http.delete<T>(`${this.baseUrl}${this.controllerName}/${methodName}/${id}`);
+  async getAll<T>(actionName: string, params?: any[]) {
+    return await this.get<T>(actionName, params);
   }
 
-  private handleSuccess<T>(data: T): ApiResponse<T> {
-    return new ApiResponse<T>(true, data, "", 200);
+  async getById<T>(actionName: string, id: number) {
+    return await this.get<T>(actionName + '/' + id.toString());
   }
 
-  private handleError<T>(error: HttpErrorResponse): Observable<ApiResponse<T>> {
-    return of(new ApiResponse<T>(false, undefined, error.message, error.status));
+  async create<T>(actionName: string, body: any) {
+    return await this.post<T>(actionName, body);
+  }
+
+  async update<T>(actionName: string, id?: number, body?: any){
+    if (id)
+      return await this.put<T>(actionName + '/' + id.toString(), body);
+    else
+      return await this.put<T>(actionName, body);
+  }
+
+  async remove<T>(actionName: string, id: number) {
+    return await this.delete<T>(actionName + '/' + id.toString());
+  }
+
+  protected setControllerName(name: string) {
+    if (name)
+      this.controllerName = name;
   }
 }

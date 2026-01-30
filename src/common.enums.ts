@@ -5,7 +5,7 @@ export enum ElementType {
     Input = "input", 
     Button = "button",
     RadioButton = "radiobutton",
-    Date = "date",
+    DatePicker = "datepicker",
     Checkbox = "checkbox",
     Chip = "chip",
 }

@@ -56,7 +56,7 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
     private _dialogService: DialogService,
     private _snack: MatSnackBar,
     private _detectChanges: ChangeDetectorRef
-  ) {}
+  ) { }
 
   private destroy$ = new Subject<void>();
   private viewInitialized = false;
@@ -64,7 +64,7 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['controllerName'] && this.controllerName) {
       try {
-        this._setupService.setControllerName?.(this.controllerName);
+        this._setupService.setController?.(this.controllerName);
       } catch (e) {
       }
     }
@@ -87,35 +87,34 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
 
   async loadData(): Promise<void> {
     this.isLoading = true;
-
-    try {
-      const result: any = await lastValueFrom(
-        from(this._setupService.getData('GetAllData'))
-      );
-
-      if (result?.IsSuccess) {
-        this.dataSource.data = Array.isArray(result.Data) ? result.Data : [];
-        this.duplicateData = this.dataSource.data; 
-        this._snack.open('Loaded data', 'OK', { duration: 1200 });
-      } else {
-        this._snack.open('Using fallback data (server returned error)', 'OK', {
-          duration: 2000,
-        });
-      }
-    } catch (err) {
-      this._snack.open('Failed to load data — using fallback', 'OK', {
-        duration: 2200,
-      });
-    } finally {
-      this.isLoading = false;
-      try {
-        if (this.paginator) this.paginator.firstPage();
-      } catch {}
+    const result: any = await this._setupService.getAll('GetAllData');
+    this.isLoading = false;
+    if (result?.IsSuccess) {
+      this.dataSource.data = Array.isArray(result.Data) ? result.Data : [];
+      this.duplicateData = this.dataSource.data;
+    } else {
+      this.dataSource.data = [];
+      this.duplicateData = [];
+      // this._snack.open('Using fallback data (server returned error)', 'OK', {
+      //   duration: 2000,
+      // });
     }
+    // try {
+
+    // } catch (err) {
+    //   this._snack.open('Failed to load data — using fallback', 'OK', {
+    //     duration: 2200,
+    //   });
+    // } finally {
+    //   this.isLoading = false;
+    //   try {
+    //     if (this.paginator) this.paginator.firstPage();
+    //   } catch {}
+    // }
   }
 
-  changeDatasource(event: any){
-    if(event?.length > 0){
+  changeDatasource(event: any) {
+    if (event?.length > 0) {
       this.dataSource.data = event;
     } else {
       this.dataSource.data = this.duplicateData;
@@ -147,7 +146,7 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
 
     try {
       const res: any = await lastValueFrom(
-        from(this._setupService.post('Create', payload))
+        from(this._setupService.create('Create', payload))
       );
       if (res?.IsSuccess) {
         const newItem = res?.Data ?? payload;
@@ -182,7 +181,7 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
 
     try {
       const res: any = await lastValueFrom(
-        from(this._setupService.put('Update', { id, ...payload }))
+        from(this._setupService.update('Update', { id, ...payload }))
       );
       if (res?.IsSuccess) {
         this._snack.open('Updated successfully', 'OK', { duration: 1400 });
@@ -239,7 +238,7 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
 
     try {
       const res: any = await lastValueFrom(
-        from(this._setupService.delete('Delete', row.id))
+        from(this._setupService.remove('Delete', row.id))
       );
       if (res?.IsSuccess) {
         this._snack.open('Deleted', 'OK', { duration: 1300 });

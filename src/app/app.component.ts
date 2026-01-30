@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { PagesModule } from './pages/pages.module';
+import { GlobalInjector } from '../core/GlobalInjector';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,8 @@ import { PagesModule } from './pages/pages.module';
 
 export class AppComponent {
 
-  constructor(){}
+  constructor(protected injector: Injector) {
+    GlobalInjector.setInjector(injector);
+  }
 
 }

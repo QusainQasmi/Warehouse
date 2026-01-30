@@ -26,6 +26,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DatePipe } from '@angular/common';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [],
@@ -56,7 +57,8 @@ import { DatePipe } from '@angular/common';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    DatePipe
+    DatePipe,
+    MatDatepickerModule
   ],
   exports: [
     MatButtonModule,
@@ -85,6 +87,7 @@ import { DatePipe } from '@angular/common';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatDatepickerModule,
     DatePipe
   ],
   providers: [

@@ -7,11 +7,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SetupService extends BaseService {
 
-  constructor(http: HttpClient) {
-    super(http);
+  constructor() {
+    super("");
   }
 
-  setControllerName(name: string) {
-    this.setController(name);
+  setController(controllerName: string){
+    this.setControllerName(controllerName);
   }
 }

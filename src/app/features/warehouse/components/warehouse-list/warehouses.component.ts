@@ -14,7 +14,6 @@ import { CityService } from '../../services/city.service';
 export class WarehousesComponent {
 
   constructor(public _cityService: CityService) {
-    this._cityService.setControllerName("City");
   }
 
   columns: CsGridColumn[] = [
@@ -27,50 +26,55 @@ export class WarehousesComponent {
   cityData: any[] = [];
   elements: FromElement[] = [];
 
-  async getCountryData() {
-    const res = await this._cityService.getData("GetAllData");
-    if (!res.IsSuccess || !res.Data) return;
-    this.cityData = Array.isArray(res.Data) && res.Data?.length > 0 ? [...res.Data] : [];
-  }
-
   ngOnInit() {
-    this.getCountryData();
 
-    setTimeout(() => {
-      this.elements = [
-        {
-          col: 12,
-          key: 'name',
-          label: 'Name',
-          elemType: ElementType.Input,
-        },
-        {
-          col: 12,
-          key: 'address',
-          label: 'Address',
-          elemType: ElementType.Input,
-        },
-        {
-          col: 6,
-          key: 'city',
-          label: 'City',
-          elemType: ElementType.Autocomplete,
-          displayField: 'cityName',
-          valueField: 'cityName',
-          datasource: this.cityData,
-          optionalDisplayField: 'countryName'
-        },
-        {
-          col: 6,
-          key: 'country',
-          label: 'Country',
-          elemType: ElementType.Autocomplete,
-          displayField: 'countryName',
-          valueField: 'countryName',
-          datasource: this.cityData,
-        },
-      ];
-    }, 1000)
+    this.elements = [
+      {
+        col: 12,
+        key: 'name',
+        label: 'Name',
+        elemType: ElementType.Input,
+      },
+      {
+        col: 12,
+        key: 'address',
+        label: 'Address',
+        elemType: ElementType.Input,
+      },
+      {
+        col: 6,
+        key: 'city',
+        label: 'City',
+        elemType: ElementType.Autocomplete,
+        displayField: 'city',
+        valueField: 'city',
+        service: this._cityService,
+        methodName: 'GetAllData',
+        optionalDisplayField: 'country'
+      },
+      {
+        col: 6,
+        key: 'city1',
+        label: 'City Select',
+        elemType: ElementType.Select,
+        displayField: 'name',
+        valueField: 'name',
+        service: this._cityService,
+        methodName: 'GetAllData',
+      },
+      {
+        col: 6,
+        key: 'active',
+        label: 'Active',
+        elemType: ElementType.Checkbox,
+      },
+      {
+        col: 3,
+        key: 'active_Date',
+        label: 'Active Date',
+        elemType: ElementType.DatePicker,
+      },
+    ];
   }
 
   ngAfterViewInit() {

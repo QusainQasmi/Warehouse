@@ -2,7 +2,7 @@
     <mat-label>{{ label }}</mat-label>
     <mat-select [(ngModel)]="csModel">
       <mat-option [value]="null">None</mat-option>
-      @for (item of _datasource; track _datasource) {
+      @for (item of datasource; track datasource) {
         <mat-option [value]="item[valueField]">{{ item[displayField] }}</mat-option>
       }
     </mat-select>

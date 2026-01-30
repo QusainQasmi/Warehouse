@@ -77,6 +77,23 @@ body { margin: 0 !important; font-family: 'Inter', system-ui, -apple-system, Bli
   background: white !important;
 }
 
+.mat-mdc-menu-panel{
+  background-color: white !important;
+  color: black !important;
+}
+
+.mat-mdc-menu-item.mat-focus-indicator{
+  color: black;
+}
+
+.mat-mdc-menu-item.mat-focus-indicator:hover{
+  background-color: lightgray !important;
+  color: black !important;
+}
+
+.mat-mdc-menu-item .mat-icon{
+  color: black !important;
+}
 // material styling
 
 .background-blue {

@@ -8,9 +8,10 @@ import { CsSelectComponent } from './cs-select/cs-select.component';
 import { CsInputComponent } from './cs-input/cs-input.component';
 import { CsFormComponent } from './cs-form/cs-form.component';
 import { CsDialogComponent } from './cs-dialog/cs-dialog.component';
-import { DialogService } from '../services/dialog.service';
 import { ɵEmptyOutletComponent } from "@angular/router";
 import { CsSearchBarComponent } from './cs-search-bar/cs-search-bar.component';
+import { CsCheckboxComponent } from './cs-checkbox/cs-checkbox.component';
+import { CsDatePickerComponent } from './cs-date-picker/cs-date-picker.component';
 // import { CsButtonComponent } from './cs-button/cs-button.component';
 
 @NgModule({
@@ -21,7 +22,9 @@ import { CsSearchBarComponent } from './cs-search-bar/cs-search-bar.component';
     CsInputComponent,
     CsFormComponent,
     CsDialogComponent,
-    CsSearchBarComponent
+    CsSearchBarComponent,
+    CsCheckboxComponent,
+    CsDatePickerComponent
     // CsButtonComponent
   ],
   imports: [
@@ -36,7 +39,9 @@ import { CsSearchBarComponent } from './cs-search-bar/cs-search-bar.component';
     CsInputComponent,
     CsFormComponent,
     CsDialogComponent,
-    CsSearchBarComponent
+    CsSearchBarComponent,
+    CsCheckboxComponent,
+    CsDatePickerComponent 
     // CsButtonComponent
   ],
   providers: [
@@ -44,7 +49,6 @@ import { CsSearchBarComponent } from './cs-search-bar/cs-search-bar.component';
       provide: STEPPER_GLOBAL_OPTIONS,
       useValue: {displayDefaultIndicatorType: false},
     },
-    // DialogService,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -7,11 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CityService extends BaseService {
 
-  constructor(http: HttpClient) {
-    super(http);
-  }
-
-  setControllerName(name: string) {
-    this.setController(name);
+  constructor() {
+    super("City");
   }
 }

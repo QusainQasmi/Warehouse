@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, TemplateRef, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { ApiResponse } from '../../ApiResponse';
+import { BaseService } from '../../services/base.service';
 
 @Component({
   selector: 'cs-autocomplete',
@@ -9,13 +10,14 @@ import { ApiResponse } from '../../ApiResponse';
   styleUrl: './cs-autocomplete.component.scss',
 })
 export class CsAutocompleteComponent implements OnInit {
-  
+
   @Input() label: any = 'label';
   @Input() valueField: any = 'value';
   @Input() displayField: any = 'name';
   @Input() type: any = 'text';
-  @Input() csModel: any;
-  @Input() service: any;
+  // @Input() csModel: any;
+  // @Input() service: BaseService | any;
+  @Input() controllerName: string = "";
   @Input() methodName: any = "GetAllData";
   @Input() optionalDisplayField: any;
   @Input() appearance: 'outline' | 'fill' = 'outline';
@@ -35,6 +37,31 @@ export class CsAutocompleteComponent implements OnInit {
     return this._datasource;
   }
 
+  private _service: any;
+
+  @Input()
+  set service(value: any) {
+    this._service = value;
+  }
+
+  get service() {
+    return this._service;
+  }
+
+  private _csModel: any;
+
+  @Input()
+  set csModel(value: any) {
+    this._csModel = value;
+  }
+
+  get csModel() {
+    return this._csModel;
+  }
+
+  constructor() {
+  }
+
   selectOption(_value: any) {
     const _selectObj = this.datasource.find(x => x[this.valueField] === _value);
     if (_selectObj) {
@@ -44,20 +71,20 @@ export class CsAutocompleteComponent implements OnInit {
   }
 
   async checkServiceData() {
-    if (this.service)
-      this.datasource = await this.getServiceData();
-    else
-      this.datasource = [...this.datasource];
-  }
-
-  async getServiceData() {
-    const res: ApiResponse<any> = await this.service[this.methodName]();
-    if (!res.IsSuccess || !res.Data || res.Data?.length === 0) return;
-    return res.Data;
+    const res = await this.service.getAll(this.methodName);
+    if (!res.IsSuccess || !res.Data) {
+      this.datasource = [];
+      return;
+    }
+    this.datasource = Array.isArray(res.Data) ? res.Data : [];
   }
 
   ngOnInit() {
-    // this.checkServiceData();
+    if (this.service) {
+      this.checkServiceData();
+    } else {
+      this.datasource = this._datasource;
+    }
   }
 
 }
