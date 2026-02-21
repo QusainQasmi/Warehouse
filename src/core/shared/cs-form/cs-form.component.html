@@ -24,6 +24,10 @@
             <div [class]="'col-' + elem.col">
                 <cs-date-picker [label]="elem.label" [hint]="elem.hint"></cs-date-picker>
             </div>
+        } @else if (elem.elemType === ElementType.Button) {
+            <div [class]="'col-' + elem.col">
+                <cs-button [label]="elem.label" [icon]="elem.icon"></cs-button>
+            </div>
         } @else {
             
         }    

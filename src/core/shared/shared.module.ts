@@ -12,7 +12,7 @@ import { ɵEmptyOutletComponent } from "@angular/router";
 import { CsSearchBarComponent } from './cs-search-bar/cs-search-bar.component';
 import { CsCheckboxComponent } from './cs-checkbox/cs-checkbox.component';
 import { CsDatePickerComponent } from './cs-date-picker/cs-date-picker.component';
-// import { CsButtonComponent } from './cs-button/cs-button.component';
+import { CsButtonComponent } from './cs-button/cs-button.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +24,8 @@ import { CsDatePickerComponent } from './cs-date-picker/cs-date-picker.component
     CsDialogComponent,
     CsSearchBarComponent,
     CsCheckboxComponent,
-    CsDatePickerComponent
-    // CsButtonComponent
+    CsDatePickerComponent,
+    CsButtonComponent
   ],
   imports: [
     CommonModule,
@@ -41,8 +41,8 @@ import { CsDatePickerComponent } from './cs-date-picker/cs-date-picker.component
     CsDialogComponent,
     CsSearchBarComponent,
     CsCheckboxComponent,
-    CsDatePickerComponent 
-    // CsButtonComponent
+    CsDatePickerComponent,
+    CsButtonComponent
   ],
   providers: [
     {

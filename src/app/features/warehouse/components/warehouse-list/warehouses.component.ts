@@ -74,6 +74,12 @@ export class WarehousesComponent {
         label: 'Active Date',
         elemType: ElementType.DatePicker,
       },
+      {
+        col: 3,
+        key: 'button_',
+        label: 'Button',
+        elemType: ElementType.Button,
+      },
     ];
   }
 

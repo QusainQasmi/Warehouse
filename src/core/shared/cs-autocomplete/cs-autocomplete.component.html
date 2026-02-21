@@ -7,8 +7,7 @@
     [(ngModel)]="displayValue"
     (input)="onChange(csModel)"
     (blur)="onTouched()"
-    [matAutocomplete]="auto"
-  />
+    [matAutocomplete]="auto"/>
 
   <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectOption($event.option.value)">
     <mat-option *ngFor="let option of datasource" [value]="option[valueField]">

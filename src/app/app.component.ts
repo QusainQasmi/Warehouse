@@ -1,6 +1,5 @@
 import { Component, Injector } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { PagesModule } from './pages/pages.module';
 import { GlobalInjector } from '../core/GlobalInjector';
 
 @Component({
