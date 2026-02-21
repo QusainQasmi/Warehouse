@@ -1,0 +1,102 @@
+.mat-mdc-raised-button,
+.mat-mdc-unelevated-button {
+  background: var(--primary-color) !important;
+  border-radius: var(--border-radius);
+}
+
+.mat-mdc-card {
+  border-radius: var(--border-radius) !important;
+}
+
+.mat-mdc-raised-button{
+  background-color: #1a73e8 !important;
+  color: white !important;
+}
+
+.mat-mdc-raised-button:hover {
+  opacity: 0.9;
+}
+
+.mdc-text-field__input {
+  color: #000 !important;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+.mat-mdc-text-field-wrapper {
+  border-radius: 8px !important;
+  background: white !important;
+}
+
+.mat-mdc-floating-label {
+  color: #1a73e8 !important;
+}
+
+.mat-mdc-form-field.mat-focused .mat-mdc-floating-label {
+  color: #1a73e8 !important;
+}
+
+.mdc-notched-outline__leading,
+.mdc-notched-outline__notch,
+.mdc-notched-outline__trailing {
+  border-color: #c5d7ff !important;
+}
+
+.mat-mdc-form-field:hover 
+.mdc-notched-outline__leading,
+.mat-mdc-form-field:hover 
+.mdc-notched-outline__notch,
+.mat-mdc-form-field:hover 
+.mdc-notched-outline__trailing {
+  border-color: #1a73e8 !important;
+}
+
+.mat-mdc-form-field.mat-focused 
+.mdc-notched-outline__leading,
+.mat-mdc-form-field.mat-focused 
+.mdc-notched-outline__notch,
+.mat-mdc-form-field.mat-focused 
+.mdc-notched-outline__trailing {
+  border-color: #1a73e8 !important;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  background: white !important;
+  color: black !important;
+  border-radius: 5px !important;
+}
+
+.mat-mdc-dialog-content {
+  background: white !important;
+  color: black !important;
+}
+
+.mat-mdc-dialog-title {
+  color: black !important;
+  background: white !important;
+}
+
+.mat-mdc-dialog-actions {
+  color: black !important;
+  background: white !important;
+}
+
+.mat-mdc-menu-panel{
+  background-color: white !important;
+  color: black !important;
+}
+
+.mat-mdc-menu-item.mat-focus-indicator{
+  color: black;
+}
+
+.mat-mdc-menu-item.mat-focus-indicator:hover{
+  background-color: lightgray !important;
+  color: black !important;
+}
+
+.mat-mdc-menu-item .mat-icon{
+  color: black !important;
+}
