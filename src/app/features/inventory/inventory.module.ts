@@ -7,7 +7,7 @@ import { MatModules } from '../../../core/mat-modules';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: InventoryComponent },
+  { path: 'inventory', component: InventoryComponent },
   { path: 'new', component: InventoryFormComponent },
   { path: ':id/edit', component: InventoryFormComponent }
 ];

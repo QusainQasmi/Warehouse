@@ -21,9 +21,29 @@ export enum FormName {
 }
 
 export const FormList = [
-  { name: 'Warehouses', value: FormName.Warehouses },
-  { name: 'Inventory', value: FormName.Inventory },
-  { name: 'Products', value: FormName.Product },
+  {
+    name: 'Warehouses',
+    value: FormName.Warehouses,
+    children: [
+      { name: 'List', value: FormName.Warehouses },
+      { name: 'Add / Edit', value: FormName.WarehouseForm }
+    ]
+  },
+  {
+    name: 'Inventory',
+    value: FormName.Inventory,
+    children: [
+      { name: 'Stock Items', value: FormName.Inventory },
+      // add more inventory-related routes here
+    ]
+  },
+  {
+    name: 'Products',
+    value: FormName.Product,
+    children: [
+      { name: 'Catalog', value: FormName.Product }
+    ]
+  },
   { name: 'Customers', value: FormName.Customer },
   { name: 'Locations', value: FormName.Location },
   { name: 'Sales', value: FormName.Sales },
