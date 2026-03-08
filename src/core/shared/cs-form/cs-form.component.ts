@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { BaseService } from '../../services/base.service';
 import { ElementType } from '../../../common.enums';
 
@@ -11,7 +11,16 @@ import { ElementType } from '../../../common.enums';
 
 export class CsFormComponent {
 
-  @Input() model: any = {};
+  private _model: any;
+  
+  @Input()
+  set model(value: any) {
+    this._model = value;
+  }
+
+  get model() {
+    return this._model;
+  }
 
   private _elements: FromElement[] = [];
   @Input() set elements(value: FromElement[]) {
@@ -42,4 +51,5 @@ export interface FromElement {
   methodName?: string;
   optionalDisplayField?: string;
   hint?: string;
+  csModelChange?: (model: any) => any;
 }

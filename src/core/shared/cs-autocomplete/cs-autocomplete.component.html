@@ -5,10 +5,10 @@
     [type]="type"
     [placeholder]="label"
     [(ngModel)]="displayValue"
-    (input)="onChange(csModel)"
-    (blur)="onTouched()"
+    (ngModelChange)="onChange($event)"
     [matAutocomplete]="auto"/>
-
+    
+    <!-- (input)="onChange(csModel)" -->
   <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectOption($event.option.value)">
     <mat-option *ngFor="let option of datasource" [value]="option[valueField]">
       {{ option[displayField] }} <span *ngIf="optionalDisplayField"> , {{ option[optionalDisplayField] }} </span>

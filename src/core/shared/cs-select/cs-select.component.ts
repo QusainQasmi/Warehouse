@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'cs-select',
@@ -13,6 +13,7 @@ export class CsSelectComponent {
   @Input() label: string = "";
   @Input() appearance: 'outline' | 'fill' = 'outline';
   @Input() methodName: any = "GetAllData";
+  @Output() csModelChange = new EventEmitter<any>();
 
   private _service: any;
   @Input() set service(value: any) {
@@ -40,6 +41,11 @@ export class CsSelectComponent {
 
   constructor() {
 
+  }
+
+  onChangeModel(value: any){
+    this.csModel = value ? value : this.csModel;
+    this.csModelChange.emit(this.csModel);
   }
 
   async checkServiceData() {

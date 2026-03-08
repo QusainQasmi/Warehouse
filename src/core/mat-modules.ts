@@ -27,7 +27,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DatePipe } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MAT_DATE_FORMATS, MatNativeDateModule } from '@angular/material/core';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { CUSTOM_DATE_FORMATS } from './date-format';
 
 @NgModule({
   declarations: [],
@@ -60,7 +62,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatPaginatorModule,
     DatePipe,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    // BrowserAnimationsModule
   ],
   exports: [
     MatButtonModule,
@@ -91,13 +94,13 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatPaginatorModule,
     MatDatepickerModule,
     DatePipe,
-    MatNativeDateModule
+    MatNativeDateModule,
+    // BrowserAnimationsModule
   ],
   providers: [
-    {
-      provide: STEPPER_GLOBAL_OPTIONS,
-      useValue: {displayDefaultIndicatorType: false},
-    },
+    { provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false} },
+    // { provide: MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS },
+    // provideNativeDateAdapter()
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

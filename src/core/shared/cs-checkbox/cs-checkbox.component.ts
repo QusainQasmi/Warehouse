@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'cs-checkbox',
@@ -10,7 +10,10 @@ export class CsCheckboxComponent {
 
   @Input() label: string = "";
   @Input() csModel: any = false;
+  @Output() csModelChange = new EventEmitter<any>();
   
-
-  
+  onChangeModel(value: any){
+    this.csModel = value ? value : this.csModel;
+    this.csModelChange.emit(this.csModel);
+  }
 }

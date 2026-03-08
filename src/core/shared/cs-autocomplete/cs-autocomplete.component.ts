@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, TemplateRef, forwardRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { ApiResponse } from '../../ApiResponse';
 import { BaseService } from '../../services/base.service';
@@ -21,11 +21,9 @@ export class CsAutocompleteComponent implements OnInit {
   @Input() methodName: any = "GetAllData";
   @Input() optionalDisplayField: any;
   @Input() appearance: 'outline' | 'fill' = 'outline';
+  @Output() csModelChange = new EventEmitter<any>();
 
   displayValue: any;
-  onChange = (value: any) => { };
-  onTouched = () => { };
-
   private _datasource: any[] = [];
 
   @Input()
@@ -61,6 +59,10 @@ export class CsAutocompleteComponent implements OnInit {
 
   constructor() {
   }
+
+  onChange(value: any){
+    this.csModelChange.emit(value ? value : this.csModel);
+  };
 
   selectOption(_value: any) {
     const _selectObj = this.datasource.find(x => x[this.valueField] === _value);

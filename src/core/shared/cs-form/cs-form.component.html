@@ -2,27 +2,27 @@
 <ng-container *ngFor="let elem of elements">
         @if(elem.elemType === ElementType.Input){
             <div [class]="'col-' + elem.col">
-                <cs-input [csModel]="model[elem.key]" [label]="elem.label" appearance="outline"></cs-input>
+                <cs-input [(csModel)]="model[elem.key]" [label]="elem.label" appearance="outline"></cs-input>
             </div>
         } @else if (elem.elemType === ElementType.Autocomplete) {
             <div [class]="'col-' + elem.col">
-                <cs-autocomplete [csModel]="model[elem.key]" [label]="elem.label" appearance="outline" [service]="elem.service" [datasource]="elem.datasource"
+                <cs-autocomplete [(csModel)]="model[elem.key]" [label]="elem.label" appearance="outline" [service]="elem.service" [datasource]="elem.datasource"
                  [optionalDisplayField]="elem.optionalDisplayField" [methodName]="elem.methodName" [valueField]="elem.valueField" 
                  [displayField]="elem.displayField" [disabledIf]="elem.disabledIf ? elem.disabledIf(model) : null"></cs-autocomplete>
             </div>
         } @else if (elem.elemType === ElementType.Select) {
             <div [class]="'col-' + elem.col">
-                <cs-select [csModel]="model[elem.key]" [label]="elem.label" appearance="outline" [service]="elem.service" [datasource]="elem.datasource"
+                <cs-select [(csModel)]="model[elem.key]" [label]="elem.label" appearance="outline" [service]="elem.service" [datasource]="elem.datasource"
                   [valueField]="elem.valueField" [disabledIf]="elem.disabledIf ? elem.disabledIf(model) : null"
                 [methodName]="elem.methodName" [displayField]="elem.displayField"></cs-select>
             </div>
         } @else if (elem.elemType === ElementType.Checkbox) {
             <div [class]="'col-' + elem.col">
-                <cs-checkbox [csModel]="model[elem.key]" [label]="elem.label"></cs-checkbox>
+                <cs-checkbox [(csModel)]="model[elem.key]" [label]="elem.label"></cs-checkbox>
             </div>
         } @else if (elem.elemType === ElementType.DatePicker) {
             <div [class]="'col-' + elem.col">
-                <cs-date-picker [label]="elem.label" [hint]="elem.hint"></cs-date-picker>
+                <cs-date-picker [label]="elem.label" [hint]="elem.hint" [(csModel)]="model[elem.key]"></cs-date-picker>
             </div>
         } @else if (elem.elemType === ElementType.Button) {
             <div [class]="'col-' + elem.col">
@@ -30,6 +30,6 @@
             </div>
         } @else {
             
-        }    
+        }
     </ng-container>
 </div>
