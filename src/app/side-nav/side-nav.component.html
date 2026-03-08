@@ -13,11 +13,28 @@
     </div>
 
     <div class="menu-container p-3">
-      <ng-container *ngFor="let item of FormLstName">
-        <p class="menu-item pointer" (click)="openPages(item)">
-          {{ item?.name }}
-        </p>
-      </ng-container>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let item of FormLstName" [expanded]="isExpanded(item)">
+          <mat-expansion-panel-header (click)="toggleItem(item)">
+            <mat-panel-title>
+              {{ item?.name }}
+            </mat-panel-title>
+            <mat-panel-description>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <!-- children list -->
+          <ng-container *ngIf="item.children?.length">
+            <div
+              *ngFor="let child of item.children"
+              class="menu-item child-item pointer"
+              (click)="$event.stopPropagation(); openPages(child)"
+            >
+              {{ child.name }}
+            </div>
+          </ng-container>
+        </mat-expansion-panel>
+      </mat-accordion>
     </div>
   </mat-sidenav>
 

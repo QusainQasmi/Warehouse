@@ -1,3 +1,4 @@
+@import '../../variables.scss';
 .side-container {
   height: 100vh !important;
   background: #f9f9f9 !important;
@@ -21,6 +22,34 @@
   }
 
   .menu-container {
+    /* override default accordion styles to match theme */
+    mat-accordion {
+      width: 100%;
+    }
+
+    .mat-expansion-panel {
+      background: transparent !important;
+      color: #ffffff !important;
+      box-shadow: none !important;
+    }
+
+    .mat-expansion-panel-header {
+      padding: 0 12px !important;
+      min-height: 40px !important;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+      }
+    }
+
+    .mat-expansion-panel-header.mat-expanded {
+      background-color: rgba(255, 255, 255, 0.2) !important;
+    }
+
+    .mat-expansion-panel-body {
+      padding: 0 !important;
+      background-color: rgba(255, 255, 255, 0.05) !important;
+    }
+
     .menu-item {
       padding: 10px 12px;
       border-radius: 6px;
@@ -33,6 +62,18 @@
         background-color: rgba(255, 255, 255, 0.15);
       }
     }
+
+    .child-item {
+      padding-left: 24px;
+      font-size: 14px;
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  /* rotate arrow when expanded */
+  .rotated {
+    transform: rotate(180deg);
+    transition: transform 0.2s;
   }
 }
 

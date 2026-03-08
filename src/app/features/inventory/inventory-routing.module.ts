@@ -4,7 +4,7 @@ import { InventoryComponent } from './components/inventory-list/inventory-list.c
 import { InventoryFormComponent } from './components/inventory-form/inventory-form.component';
 
 const routes: Routes = [
-  { path: '', component: InventoryComponent },
+  { path: 'inventory', component: InventoryComponent },
   { path: 'new', component: InventoryFormComponent },
   { path: ':id/edit', component: InventoryFormComponent }
 ];
