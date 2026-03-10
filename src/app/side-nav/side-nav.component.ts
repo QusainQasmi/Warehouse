@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MatModules } from '../../core/mat-modules';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router, RouterOutlet } from '@angular/router';
-import { FormList, FormName } from '../../common.enums';
+import { FormList, Modules } from '../../common.enums';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
@@ -37,13 +37,14 @@ export class SideNavComponent {
 
   openPages(item: any) {
     const routesMap: Record<string, string> = {
-      [FormName.Warehouses]: 'warehouse',
-      [FormName.WarehouseForm]: 'warehouse/form',
-      [FormName.Inventory]: 'inventory',
-      [FormName.Product]: 'product',
-      [FormName.Customer]: 'customer',
-      [FormName.Location]: 'location',
-      [FormName.Sales]: 'sales',
+      [Modules.Setup]: 'warehouse/list',
+      [Modules.Analytics]: 'Analytics',
+      // [FormName.WarehouseForm]: 'warehouse/form',
+      // [FormName.Inventory]: 'inventory',
+      // [FormName.Product]: 'product',
+      // [FormName.Customer]: 'customer',
+      // [FormName.Location]: 'location',
+      // [FormName.Sales]: 'sales',
     };
 
     const route = routesMap[item?.value];

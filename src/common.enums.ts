@@ -8,43 +8,53 @@ export enum ElementType {
     DatePicker = "datepicker",
     Checkbox = "checkbox",
     Chip = "chip",
+    Textbox = "textbox",
+    RichTextEditor = "richtexteditor",
+    FileUpload = "fileupload",
+    DisplayText = "displaytext",
+    Row = "row",
 }
 
-export enum FormName {
-  Warehouses = 'Warehouses',
-  WarehouseForm = 'WarehouseForm',
+export enum Modules {
+  Setup = 'Setup',
+  Transport = 'Transport',
+  Shipment = 'Shipment',
+  Import = 'Import',
+  Export = 'Export',
   Inventory = 'Inventory',
-  Product = 'Product',
-  Customer = 'Customer',
-  Location = 'Location',
-  Sales = 'Sales',
+  Warehouse = 'Warehouse',
+  FleetManagement = 'FleetManagement',
+  Analytics = 'Analytics',
+  Utilities = 'Utilities',
 }
 
 export const FormList = [
   {
-    name: 'Warehouses',
-    value: FormName.Warehouses,
+    name: 'Setup',
+    value: Modules.Setup,
+    icon: '',
+    isShow: true,
     children: [
-      { name: 'List', value: FormName.Warehouses },
-      { name: 'Add / Edit', value: FormName.WarehouseForm }
+      { name: 'Curreny', icon: '', userRight: true },
+      { name: 'Location', icon: '', userRight: true }
     ]
   },
   {
-    name: 'Inventory',
-    value: FormName.Inventory,
-    children: [
-      { name: 'Stock Items', value: FormName.Inventory },
-      // add more inventory-related routes here
-    ]
+    name: 'Analytics',
+    value: Modules.Analytics,
+    // children: [
+    //   { name: 'Stock Items', value: FormName.Inventory },
+    //   // add more inventory-related routes here
+    // ]
   },
-  {
-    name: 'Products',
-    value: FormName.Product,
-    children: [
-      { name: 'Catalog', value: FormName.Product }
-    ]
-  },
-  { name: 'Customers', value: FormName.Customer },
-  { name: 'Locations', value: FormName.Location },
-  { name: 'Sales', value: FormName.Sales },
+  // {
+  //   name: 'Products',
+  //   value: FormName.Product,
+  //   children: [
+  //     { name: 'Catalog', value: FormName.Product }
+  //   ]
+  // },
+  // { name: 'Customers', value: FormName.Customer },
+  // { name: 'Locations', value: FormName.Location },
+  // { name: 'Sales', value: FormName.Sales },
 ];
