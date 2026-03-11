@@ -11,6 +11,7 @@ export class CsInputComponent {
   @Input() appearance: 'outline' | 'fill' = 'outline';
   @Input() label: string = "";
   @Input() csModel: any;
+  @Input() required: boolean = false;
   @Output() csModelChange = new EventEmitter<any>();
 
   onModelChange(ev: any){

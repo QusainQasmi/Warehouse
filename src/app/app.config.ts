@@ -6,6 +6,8 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { provideMomentDateAdapter } from '@angular/material-moment-adapter';
 import { provideHttpClient } from '@angular/common/http';
 import { CUSTOM_DATE_FORMATS } from '../core/date-format';
+import { provideToastr } from 'ngx-toastr';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,6 +16,12 @@ export const appConfig: ApplicationConfig = {
     provideNativeDateAdapter(),
     provideMomentDateAdapter(),
     provideHttpClient(),
+    provideAnimations(),
+    provideToastr({
+      positionClass: 'toast-top-right',
+      timeOut: 3000,
+      preventDuplicates: true
+    }),
     { provide: MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS }
   ]
 };

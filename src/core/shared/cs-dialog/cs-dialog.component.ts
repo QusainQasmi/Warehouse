@@ -20,7 +20,7 @@ export class CsDialogComponent {
   }
 
   onSave(){
-    console.log(this.data.model);
+    this.dialogRef.close(this.data.model);
   }
 }
 

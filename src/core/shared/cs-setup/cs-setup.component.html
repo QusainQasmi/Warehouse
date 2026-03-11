@@ -6,7 +6,7 @@
         (datasourceChange)="changeDatasource($event)"></cs-search-bar>
       <div class="btn-top">
 
-        <button mat-mini-fab (click)="openFormDialog()" matTooltip="Add New Record" class="page-action">
+        <button mat-mini-fab (click)="openFormFn()" matTooltip="Add New Record" class="page-action">
           <mat-icon>add</mat-icon>
         </button>
         <button mat-mini-fab class="page-action" [matMenuTriggerFor]="menu">
@@ -37,7 +37,7 @@
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let element" class="custom-row">
           <div class="w-100 d-flex align-items-center">
-            <button class="btn small" (click)="openFormDialog(element)">
+            <button class="btn small" (click)="openFormFn(element)">
               <mat-icon>edit</mat-icon>
             </button>
             <button class="btn small danger" (click)="deleteItem(element)">

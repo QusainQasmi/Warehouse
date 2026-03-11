@@ -4,24 +4,20 @@ import {
   ViewChild,
   OnChanges,
   SimpleChanges,
-  AfterViewInit,
   OnDestroy,
   TemplateRef,
-  ChangeDetectorRef,
   OnInit,
 } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { lastValueFrom, from, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { CsDialogComponent } from '../cs-dialog/cs-dialog.component';
-import { SetupService } from '../../services/setup.service';
 import { DialogService } from '../../services/dialog.service';
-import { MatDialogConfig } from '@angular/material/dialog';
 import { FromElement } from '../cs-form/cs-form.component';
-import { BaseService } from '../../services/base.service';
 import { ApiResponse } from '../../ApiResponse';
+import { GlobalHelpers } from '../../GlobalHelpers';
+import { ToasterService } from '../../services/toaster.service';
 
 @Component({
   selector: 'cs-setup',
@@ -67,8 +63,12 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
   constructor(
     // private _setupService: SetupService,
     private _dialogService: DialogService,
-    private _snack: MatSnackBar,
+    private _toaster: ToasterService,
   ) { }
+
+  get displayColumnKeys() {
+    return this.displayedColumns;
+  }
 
   private destroy$ = new Subject<void>();
 
@@ -84,9 +84,17 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
     this.loadData();
   }
 
+  changeDatasource(event: any) {
+    if (event?.length > 0) {
+      this.dataSource.data = event;
+    } else {
+      this.dataSource.data = this.duplicateData;
+    }
+  }
+
   async loadData(){
     this.isLoading = true;
-    const result: ApiResponse = await this.service?.getAll();
+    const result: ApiResponse = await this.service?.getAllData();
     this.isLoading = false;
     if(!result?.IsSuccess || !result.Data || result.Data?.length === 0) {
       this.dataSource.data = [];
@@ -97,37 +105,37 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
     this.duplicateData = this.dataSource.data;
   }
 
-  changeDatasource(event: any) {
-    if (event?.length > 0) {
-      this.dataSource.data = event;
-    } else {
-      this.dataSource.data = this.duplicateData;
-    }
-  }
-
-  async openFormDialog(row?: any): Promise<void> {
+  async openFormFn(row?: any){
     const dialogRef = this._dialogService.open(CsDialogComponent, {
       title: row ? `Edit ${this.title}` : `Add ${this.title}`,
       model: row ? row : {},
       elements: this.elements
     }, undefined, this.width);
+
+    dialogRef.afterClosed().subscribe((model: any) => {
+      if(row) this.updateData(model);
+      else this.addNewRecord(model);
+    })
   }
 
-  get displayColumnKeys() {
-    return this.displayedColumns;
+  async addNewRecord(data: any){
+    const errors = GlobalHelpers.ValidateModel(this.elements, data);
+    if(Array.isArray(errors) && errors.length > 0){
+      this._toaster.Error(errors);
+      return;
+    }
+    const res: ApiResponse = await this.service?.save(data);
+    if(!res?.IsSuccess || !res.Data || res.Data?.length === 0) {
+      this.dataSource.data = [];
+      this.duplicateData = [];
+      return;
+    }
+    this._dialogService.closeAll();
+    this._toaster.Success(`Record Add Successfully!`);
   }
-
-  addItem() {
-    this.openFormDialog();
-  }
-
-  editItem(row: any) {
-    this.openFormDialog(row);
-  }
-
-  deleteItem(row: any){
-
-  }
+  
+  updateData(data: any){}
+  deleteItem(data: any){}
 
   ngOnDestroy(): void {
     this.destroy$.next();

@@ -45,6 +45,7 @@ export interface FromElement {
   valueField?: string;
   displayField?: string;
   service?: BaseService;
+  required?: Boolean;
   requiredIf?: (model: any) => boolean;
   disabledIf?: (model: any) => boolean;
   appearance?: string;

@@ -1,3 +1,5 @@
+import { FromElement } from "./shared/cs-form/cs-form.component";
+
 export class GlobalHelpers {
 
   static Clone(_model: any = {}) {
@@ -76,6 +78,15 @@ export class GlobalHelpers {
     const year = date.getFullYear();
 
     return `${day}-${month}-${year}`;
+  }
+
+  static ValidateModel(elements: FromElement[], model: any){
+    if(elements?.length === 0) return;
+    let errorLst: any[] = [];
+    elements.forEach((x: FromElement) => {
+      if(x.required && !model[x.key]) errorLst.push(`${x.label} Is Required!`);
+    });
+    return errorLst;
   }
 
 }

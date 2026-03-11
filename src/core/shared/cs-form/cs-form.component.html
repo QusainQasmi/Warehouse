@@ -2,7 +2,7 @@
 <ng-container *ngFor="let elem of elements">
         @if(elem.elemType === ElementType.Input){
             <div [class]="'col-' + elem.col">
-                <cs-input [(csModel)]="model[elem.key]" [label]="elem.label" appearance="outline"></cs-input>
+                <cs-input [(csModel)]="model[elem.key]" [label]="elem.label" appearance="outline" [required]="elem.required"></cs-input>
             </div>
         } @else if (elem.elemType === ElementType.Autocomplete) {
             <div [class]="'col-' + elem.col">
