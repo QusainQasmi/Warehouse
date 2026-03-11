@@ -3,9 +3,9 @@
     #sidenav
     mode="side"
     opened
-    [fixedInViewport]="options.value.fixed"
-    [fixedTopGap]="options.value.top"
-    [fixedBottomGap]="options.value.bottom"
+    [fixedInViewport]="false"
+    [fixedTopGap]="0"
+    [fixedBottomGap]="0"
     class="side-panel background-blue"
   >
     <div class="logo-container p-3">
@@ -14,7 +14,7 @@
 
     <div class="menu-container p-3">
       <mat-accordion>
-        <mat-expansion-panel *ngFor="let item of FormLstName" [expanded]="isExpanded(item)">
+        <mat-expansion-panel *ngFor="let item of LayoutLst" [expanded]="isExpanded(item)">
           <mat-expansion-panel-header (click)="toggleItem(item)">
             <mat-panel-title>
               {{ item?.name }}
@@ -38,7 +38,7 @@
     </div>
   </mat-sidenav>
 
-  <mat-sidenav-content [formGroup]="options">
+  <mat-sidenav-content>
     <router-outlet></router-outlet>
 
     <button mat-mini-fab (click)="sidenav.toggle()" class="action-btn">

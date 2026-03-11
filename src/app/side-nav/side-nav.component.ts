@@ -1,8 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatModules } from '../../core/mat-modules';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router, RouterOutlet } from '@angular/router';
-import { FormList, Modules } from '../../common.enums';
+import { Modules } from '../../common.enums';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
@@ -13,18 +12,10 @@ import { MatExpansionModule } from '@angular/material/expansion';
   styleUrls: ['./side-nav.component.scss'],
 })
 export class SideNavComponent {
-  FormLstName = FormList;
-  options: FormGroup;
+  LayoutLst: any[] = [];
   expanded: Record<string, boolean> = {};
-  private _router = inject(Router);
 
-  constructor(private fb: FormBuilder) {
-    this.options = this.fb.group({
-      bottom: 0,
-      fixed: false,
-      top: 0,
-    });
-  }
+  constructor(public _router: Router) { }
 
   toggleItem(item: any) {
     const key = item?.value;
@@ -36,20 +27,26 @@ export class SideNavComponent {
   }
 
   openPages(item: any) {
-    const routesMap: Record<string, string> = {
-      [Modules.Setup]: 'warehouse/list',
-      [Modules.Analytics]: 'Analytics',
-      // [FormName.WarehouseForm]: 'warehouse/form',
-      // [FormName.Inventory]: 'inventory',
-      // [FormName.Product]: 'product',
-      // [FormName.Customer]: 'customer',
-      // [FormName.Location]: 'location',
-      // [FormName.Sales]: 'sales',
-    };
-
-    const route = routesMap[item?.value];
-    if (route) {
-      this._router.navigate([route]);
+    if (item?.path) {
+      this._router.navigate([item.path]);
     }
+  }
+
+  ngOnInit() {
+    this.LayoutLst = [
+      {
+        name: 'Setup',
+        value: Modules.Setup,
+        icon: '',
+        userRight: true,
+        children: [
+          { name: 'Location', path: '/setup/location', icon: '', userRight: true },
+          { name: 'party', path: '/setup/party', icon: '', userRight: true }
+        ]
+      },
+    ];
+  }
+
+  ngAfterViewInit() {
   }
 }

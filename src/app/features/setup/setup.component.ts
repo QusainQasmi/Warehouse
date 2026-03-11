@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-setup',
   standalone: true,
-  template: `<p>Setup area (module scaffold).</p>`,
-  styles: []
+  templateUrl: './setup.component.html',
+  styles: [],
+  imports: [RouterOutlet]
 })
 export class SetupComponent {}

@@ -4,12 +4,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { SetupComponent } from './setup.component';
 import { SharedModule } from '../../../core/shared/shared.module';
 import { MatModules } from '../../../core/mat-modules';
+import { LocationComponent } from './setup-pages/location/location.component';
+import { PartyComponent } from './setup-pages/party/party.component';
 
 const routes: Routes = [
-  { path: '', component: SetupComponent }
+  {  path: 'location', component: LocationComponent },
+  {  path: 'party', component: PartyComponent },
 ];
 
 @NgModule({
-  imports: [CommonModule, MatModules, SharedModule, SetupComponent, RouterModule.forChild(routes)],
+  declarations: [LocationComponent, PartyComponent], 
+  imports: [CommonModule, MatModules, SharedModule, RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
+
 export class SetupModule {}

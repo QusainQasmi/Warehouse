@@ -27,34 +27,3 @@ export enum Modules {
   Analytics = 'Analytics',
   Utilities = 'Utilities',
 }
-
-export const FormList = [
-  {
-    name: 'Setup',
-    value: Modules.Setup,
-    icon: '',
-    isShow: true,
-    children: [
-      { name: 'Curreny', icon: '', userRight: true },
-      { name: 'Location', icon: '', userRight: true }
-    ]
-  },
-  {
-    name: 'Analytics',
-    value: Modules.Analytics,
-    // children: [
-    //   { name: 'Stock Items', value: FormName.Inventory },
-    //   // add more inventory-related routes here
-    // ]
-  },
-  // {
-  //   name: 'Products',
-  //   value: FormName.Product,
-  //   children: [
-  //     { name: 'Catalog', value: FormName.Product }
-  //   ]
-  // },
-  // { name: 'Customers', value: FormName.Customer },
-  // { name: 'Locations', value: FormName.Location },
-  // { name: 'Sales', value: FormName.Sales },
-];

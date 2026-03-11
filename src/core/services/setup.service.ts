@@ -10,8 +10,4 @@ export class SetupService extends BaseService {
   constructor() {
     super("");
   }
-
-  setController(controllerName: string){
-    this.setControllerName(controllerName);
-  }
 }
