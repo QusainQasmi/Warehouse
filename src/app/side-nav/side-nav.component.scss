@@ -37,13 +37,14 @@
       padding: 0 12px !important;
       min-height: 40px !important;
       &:hover {
-        background-color: rgba(255, 255, 255, 0.1) !important;
+        background-color: #11335d !important;
+        // background-color: rgba(255, 255, 255, 0.1) !important;
       }
     }
 
-    .mat-expansion-panel-header.mat-expanded {
-      background-color: rgba(255, 255, 255, 0.2) !important;
-    }
+    // .mat-expansion-panel-header.mat-expanded {
+    //   background-color: rgba(255, 255, 255, 0.2) !important;
+    // }
 
     .mat-expansion-panel-body {
       padding: 0 !important;
@@ -58,15 +59,15 @@
       transition: 0.2s;
       font-weight: 500;
 
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.15);
-      }
+      // &:hover {
+      //   background-color: rgba(255, 255, 255, 0.15);
+      // }
     }
 
     .child-item {
       padding-left: 24px;
       font-size: 14px;
-      background-color: rgba(255, 255, 255, 0.15);
+      // background-color: rgba(255, 255, 255, 0.15);
     }
   }
 
@@ -88,7 +89,7 @@
   margin-left: -15px;
   transition: 0.2s;
 
-  &:hover {
-    background: #0e2b4c;
-  }
+  // &:hover {
+  //   background: #0e2b4c;
+  // }
 }
