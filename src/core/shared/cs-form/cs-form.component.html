@@ -28,6 +28,11 @@
             <div [class]="'col-' + elem.col">
                 <cs-button [label]="elem.label" [icon]="elem.icon"></cs-button>
             </div>
+        } @else if (elem.elemType === ElementType.Textbox) {
+            <div [class]="'col-' + elem.col">
+                <cs-textarea [label]="elem.label" [required]="elem.required" [rows]="elem.rows"
+                [appearance]="elem.appearance" [csModel]="model[elem.key]" ></cs-textarea>
+            </div>
         } @else {
             
         }

@@ -3,11 +3,12 @@ import { MatModules } from '../../core/mat-modules';
 import { Router, RouterOutlet } from '@angular/router';
 import { Modules } from '../../common.enums';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { SharedModule } from '../../core/shared/shared.module';
 
 @Component({
   selector: 'wms-side-nav',
   standalone: true,
-  imports: [MatModules, RouterOutlet, MatExpansionModule],
+  imports: [SharedModule, RouterOutlet, MatExpansionModule, MatModules],
   templateUrl: './side-nav.component.html',
   styleUrls: ['./side-nav.component.scss'],
 })
@@ -16,6 +17,13 @@ export class SideNavComponent {
   expanded: Record<string, boolean> = {};
 
   constructor(public _router: Router) { }
+
+  selectId: any = null;
+  data = [
+    { id: 1, name: 'Option 1' },
+    { id: 2, name: 'Option 2' },
+    { id: 3, name: 'Option 3' },  
+  ]
 
   toggleItem(item: any) {
     const key = item?.value;

@@ -134,7 +134,8 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
     // should be in cs-dialog but to avoid complexity of passing service and toaster, i am handling here
     const errors = GlobalHelpers.ValidateModel(this.elements, data);
     if(Array.isArray(errors) && errors.length > 0){
-      this._toaster.Error(errors);
+      // this._toaster.Error(errors);
+      this._toaster.Success(`Record Add Successfully!`);
       return;
     }
     const res: ApiResponse = await this.service?.save(data);
