@@ -27,6 +27,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DatePipe } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatListModule } from '@angular/material/list';
+import { MatRippleModule } from '@angular/material/core';
 import { MAT_DATE_FORMATS, MatNativeDateModule } from '@angular/material/core';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { CUSTOM_DATE_FORMATS } from './date-format';
@@ -63,6 +65,8 @@ import { CUSTOM_DATE_FORMATS } from './date-format';
     DatePipe,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatListModule,
+    MatRippleModule
     // BrowserAnimationsModule
   ],
   exports: [
@@ -95,6 +99,8 @@ import { CUSTOM_DATE_FORMATS } from './date-format';
     MatDatepickerModule,
     DatePipe,
     MatNativeDateModule,
+    MatListModule,
+    MatRippleModule
     // BrowserAnimationsModule
   ],
   providers: [
