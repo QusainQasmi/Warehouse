@@ -98,8 +98,8 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
     const result: ApiResponse = await this.service?.getAllData();
     this.isLoading = false;
     if(!result?.IsSuccess || !result.Data || result.Data?.length === 0) {
-      this.dataSource.data = [{id:1, locCode: "test", locName: "test", country: "test"}]; // to test table with dummy data, you can remove this line later, and uncomment the below line
-      // this.dataSource.data = [];
+      // this.dataSource.data = [{id:1, locCode: "test", locName: "test", country: "test"}]; // to test table with dummy data, you can remove this line later, and uncomment the below line
+      this.dataSource.data = [];
       this.duplicateData = [];
       return;
     }
