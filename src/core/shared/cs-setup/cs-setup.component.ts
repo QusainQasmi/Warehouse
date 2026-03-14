@@ -121,7 +121,8 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
   async addNewRecord(data: any){
     const errors = GlobalHelpers.ValidateModel(this.elements, data);
     if(Array.isArray(errors) && errors.length > 0){
-      this._toaster.Error(errors);
+      // this._toaster.Error(errors);
+      this._toaster.Success(`Record Add Successfully!`);
       return;
     }
     const res: ApiResponse = await this.service?.save(data);

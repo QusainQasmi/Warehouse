@@ -53,4 +53,5 @@ export interface FromElement {
   optionalDisplayField?: string;
   hint?: string;
   csModelChange?: (model: any) => any;
+  rows?: number;
 }

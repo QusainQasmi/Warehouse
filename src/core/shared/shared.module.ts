@@ -13,6 +13,7 @@ import { CsSearchBarComponent } from './cs-search-bar/cs-search-bar.component';
 import { CsCheckboxComponent } from './cs-checkbox/cs-checkbox.component';
 import { CsDatePickerComponent } from './cs-date-picker/cs-date-picker.component';
 import { CsButtonComponent } from './cs-button/cs-button.component';
+import { CsTextareaComponent } from './cs-textarea/cs-textarea.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CsButtonComponent } from './cs-button/cs-button.component';
     CsSearchBarComponent,
     CsCheckboxComponent,
     CsDatePickerComponent,
-    CsButtonComponent
+    CsButtonComponent,
+    CsTextareaComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +44,8 @@ import { CsButtonComponent } from './cs-button/cs-button.component';
     CsSearchBarComponent,
     CsCheckboxComponent,
     CsDatePickerComponent,
-    CsButtonComponent
+    CsButtonComponent,
+    CsTextareaComponent
   ],
   providers: [
     {

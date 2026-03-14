@@ -1,0 +1,5 @@
+<mat-form-field [appearance]="appearance">
+  <mat-label>{{ label }}</mat-label>
+  <textarea matInput [rows]="rows" [(ngModel)]="csModel"
+    (ngModelChange)="onChangeModel($event)" [required]="required"></textarea>
+</mat-form-field>

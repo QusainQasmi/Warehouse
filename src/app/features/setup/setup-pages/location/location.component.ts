@@ -39,7 +39,16 @@ export class LocationComponent {
       label: 'Country',
       key: 'country',
       required: true
-    }
+    },
+    // {
+    //   col: 12,
+    //   elemType: ElementType.Textbox,
+    //   label: 'Test Here',
+    //   key: 'test',
+    //   required: true,
+    //   rows: 4,
+    //   appearance: 'outline'
+    // }
   ];
 
   constructor(public _service: LocationService){}
