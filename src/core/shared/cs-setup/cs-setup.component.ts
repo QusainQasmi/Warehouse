@@ -29,6 +29,7 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
 
   @Input() columns: CsGridColumn[] = [];
   @Input() controllerName!: string;
+  @Input() customGet: Boolean = false; // if true then it will pass id to dialog instead of whole row data, and it's the responsibility of dialog component to get the data based on id, this is useful in case of large data to avoid passing large data to dialog
   @Input() title: string = "";
   @Input() width: string = "80vw";
   private _elements: FromElement[] = [];
@@ -97,7 +98,8 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
     const result: ApiResponse = await this.service?.getAllData();
     this.isLoading = false;
     if(!result?.IsSuccess || !result.Data || result.Data?.length === 0) {
-      this.dataSource.data = [];
+      this.dataSource.data = [{id:1, locCode: "test", locName: "test", country: "test"}]; // to test table with dummy data, you can remove this line later, and uncomment the below line
+      // this.dataSource.data = [];
       this.duplicateData = [];
       return;
     }
@@ -108,17 +110,28 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
   async openFormFn(row?: any){
     const dialogRef = this._dialogService.open(CsDialogComponent, {
       title: row ? `Edit ${this.title}` : `Add ${this.title}`,
-      model: row ? row : {},
-      elements: this.elements
+      model: row ? (this.customGet && row.id ? this.getDataById(row.id) : row ) : {}, // if id is present and customGet function is provided then pass id to dialog, otherwise pass whole row data to dialog
+      elements: this.elements,
     }, undefined, this.width);
 
     dialogRef.afterClosed().subscribe((model: any) => {
-      if(row) this.updateData(model);
-      else this.addNewRecord(model);
+        if(model) this.addNewRecord(model);
     })
   }
 
+  // this function is used in case of customGet is true, so that dialog can get the data based on id, this is useful in case of large data to avoid passing large data to dialog
+  // can also be moved to dialog component, but to avoid complexity of passing service and toaster, i am handling here in setup component
+  async getDataById(id: any) {
+    const res: ApiResponse = await this.service?.getById('get',id);
+    if(!res?.IsSuccess || !res?.Data) {
+      this._toaster.Error(res?.Message || "Failed to get record data!");
+      return null;
+    }
+    return res.Data;
+  }
+
   async addNewRecord(data: any){
+    // should be in cs-dialog but to avoid complexity of passing service and toaster, i am handling here
     const errors = GlobalHelpers.ValidateModel(this.elements, data);
     if(Array.isArray(errors) && errors.length > 0){
       this._toaster.Error(errors);
@@ -131,11 +144,16 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
       return;
     }
     this._dialogService.closeAll();
-    this._toaster.Success(`Record Add Successfully!`);
+    this._toaster.Success(`Record Added Successfully!`);
   }
   
-  updateData(data: any){}
-  deleteItem(data: any){}
+  async deleteItem(data: any){
+    // will be good to have confirmation dialog before delete, but to avoid complexity i am skipping that
+    const res: ApiResponse = await this.service?.remove('delete', data.id);
+    if(!res?.IsSuccess) return this._toaster.Error(res?.Message || "Failed to delete record!");
+    this._toaster.Success(`Record Deleted Successfully!`);
+    this.loadData(); // maybe we can remove the deleted item from datasource instead of calling api again to load data, but to avoid complexity i am calling loadData again
+  }
 
   ngOnDestroy(): void {
     this.destroy$.next();
