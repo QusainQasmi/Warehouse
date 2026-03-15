@@ -31,6 +31,7 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
   @Input() controllerName!: string;
   @Input() customGet: Boolean = false; // if true then it will pass id to dialog instead of whole row data, and it's the responsibility of dialog component to get the data based on id, this is useful in case of large data to avoid passing large data to dialog
   @Input() title: string = "";
+  @Input() primaryKey: string = "id";
   @Input() width: string = "80vw";
   private _elements: FromElement[] = [];
   @Input()
@@ -134,11 +135,11 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
     // should be in cs-dialog but to avoid complexity of passing service and toaster, i am handling here
     const errors = GlobalHelpers.ValidateModel(this.elements, data);
     if(Array.isArray(errors) && errors.length > 0){
-      // this._toaster.Error(errors);
-      this._toaster.Success(`Record Add Successfully!`);
+      this._toaster.Error(errors);
       return;
     }
-    const res: ApiResponse = await this.service?.save(data);
+    const primaryId = data && this.primaryKey ? data[this.primaryKey] : null;
+    const res: ApiResponse = await this.service?.saveData(data, primaryId);
     if(!res?.IsSuccess || !res.Data || res.Data?.length === 0) {
       this.dataSource.data = [];
       this.duplicateData = [];
@@ -146,14 +147,14 @@ export class CsSetupComponent implements OnChanges, OnDestroy, OnInit {
     }
     this._dialogService.closeAll();
     this._toaster.Success(`Record Added Successfully!`);
+    await this.loadData();
   }
   
   async deleteItem(data: any){
-    // will be good to have confirmation dialog before delete, but to avoid complexity i am skipping that
     const res: ApiResponse = await this.service?.remove('delete', data.id);
     if(!res?.IsSuccess) return this._toaster.Error(res?.Message || "Failed to delete record!");
     this._toaster.Success(`Record Deleted Successfully!`);
-    this.loadData(); // maybe we can remove the deleted item from datasource instead of calling api again to load data, but to avoid complexity i am calling loadData again
+    await this.loadData(); // maybe we can remove the deleted item from datasource instead of calling api again to load data, but to avoid complexity i am calling loadData again
   }
 
   ngOnDestroy(): void {

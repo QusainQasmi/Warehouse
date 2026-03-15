@@ -29,7 +29,7 @@ export abstract class BaseService {
     return httpParams;
   }
 
-  protected async get<T>(action?: string, params?: any[]){
+  protected async get<T>(action?: string, params?: any[]) {
     try {
       const res: ApiResponse<T> = await lastValueFrom(
         HttpHelper.get(this.buildUrl(action), this.buildParams(params))
@@ -85,11 +85,14 @@ export abstract class BaseService {
     return await this.get<T>(actionName + '/' + id.toString());
   }
 
-  async create<T>(actionName: string, body: any) {
-    return await this.post<T>(actionName, body);
+  async save<T>(actionName: string, body: any, id?: number) {
+    if (id)
+      return await this.put<T>(actionName + '/' + id.toString(), body);
+    else
+      return await this.post<T>(actionName, body);
   }
 
-  async update<T>(actionName: string, id?: number, body?: any){
+  async update<T>(actionName: string, id?: number, body?: any) {
     if (id)
       return await this.put<T>(actionName + '/' + id.toString(), body);
     else

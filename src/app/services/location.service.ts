@@ -14,7 +14,7 @@ export class LocationService extends BaseService {
     return await this.getAll("GetAllData");
   }
 
-  async save(body: any){
-    return await this.create("Add", body);
+  async saveData(body: any, id?: any){
+    return await this.save("Add", body, id);
   }
 }
