@@ -14,6 +14,7 @@ import { CsCheckboxComponent } from './cs-checkbox/cs-checkbox.component';
 import { CsDatePickerComponent } from './cs-date-picker/cs-date-picker.component';
 import { CsButtonComponent } from './cs-button/cs-button.component';
 import { CsTextareaComponent } from './cs-textarea/cs-textarea.component';
+import { CsRadiobuttonComponent } from './cs-radiobutton/cs-radiobutton.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { CsTextareaComponent } from './cs-textarea/cs-textarea.component';
     CsCheckboxComponent,
     CsDatePickerComponent,
     CsButtonComponent,
-    CsTextareaComponent
+    CsTextareaComponent,
+    CsRadiobuttonComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +47,8 @@ import { CsTextareaComponent } from './cs-textarea/cs-textarea.component';
     CsCheckboxComponent,
     CsDatePickerComponent,
     CsButtonComponent,
-    CsTextareaComponent
+    CsTextareaComponent,
+    CsRadiobuttonComponent
   ],
   providers: [
     {

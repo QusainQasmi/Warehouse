@@ -1,0 +1,9 @@
+<!-- <mat-form-field> -->
+<mat-label>{{ label }}</mat-label>
+<div>
+  <mat-radio-group [(ngModel)]="csModel" (ngModelChange)="onChangeModel($event)" *ngFor="let row of datasource"
+    [required]="required">
+    <mat-radio-button value="{{row[valueField]}}">{{row[displayField]}}</mat-radio-button>
+  </mat-radio-group>
+</div>
+<!-- </mat-form-field> -->

@@ -4,14 +4,14 @@ export enum ElementType {
     Select = "select",
     Input = "input", 
     Button = "button",
-    RadioButton = "radiobutton",
     DatePicker = "datepicker",
     Checkbox = "checkbox",
-    Chip = "chip",
     Textbox = "textbox",
+    RadioButton = "radiobutton",
+    SimpleTxt = "SimpleTxt",
+    Chip = "chip",
     RichTextEditor = "richtexteditor",
     FileUpload = "fileupload",
-    DisplayText = "displaytext",
     Row = "row",
 }
 

@@ -1,40 +1,50 @@
 <div class="row w-100">
-<ng-container *ngFor="let elem of elements">
+    <ng-container *ngFor="let elem of elements">
         @if(elem.elemType === ElementType.Input){
-            <div [class]="'col-' + elem.col">
-                <cs-input [(csModel)]="model[elem.key]" [label]="elem.label" appearance="outline" [required]="elem.required"></cs-input>
-            </div>
+        <div [class]="'col-' + elem.col">
+            <cs-input [(csModel)]="model[elem.key]" [label]="elem.label" appearance="outline"
+                [required]="elem.required"></cs-input>
+        </div>
         } @else if (elem.elemType === ElementType.Autocomplete) {
-            <div [class]="'col-' + elem.col">
-                <cs-autocomplete [(csModel)]="model[elem.key]" [label]="elem.label" appearance="outline" [service]="elem.service" [datasource]="elem.datasource"
-                 [optionalDisplayField]="elem.optionalDisplayField" [methodName]="elem.methodName" [valueField]="elem.valueField" 
-                 [displayField]="elem.displayField" [disabledIf]="elem.disabledIf ? elem.disabledIf(model) : null"></cs-autocomplete>
-            </div>
+        <div [class]="'col-' + elem.col">
+            <cs-autocomplete [(csModel)]="model[elem.key]" [label]="elem.label" appearance="outline"
+                [service]="elem.service" [datasource]="elem.datasource"
+                [optionalDisplayField]="elem.optionalDisplayField" [methodName]="elem.methodName"
+                [valueField]="elem.valueField" [displayField]="elem.displayField"
+                [disabledIf]="elem.disabledIf ? elem.disabledIf(model) : null"></cs-autocomplete>
+        </div>
         } @else if (elem.elemType === ElementType.Select) {
-            <div [class]="'col-' + elem.col">
-                <cs-select [(csModel)]="model[elem.key]" [label]="elem.label" appearance="outline" [service]="elem.service" [datasource]="elem.datasource"
-                  [valueField]="elem.valueField" [disabledIf]="elem.disabledIf ? elem.disabledIf(model) : null"
-                [methodName]="elem.methodName" [displayField]="elem.displayField"></cs-select>
-            </div>
+        <div [class]="'col-' + elem.col">
+            <cs-select [(csModel)]="model[elem.key]" [label]="elem.label" appearance="outline" [service]="elem.service"
+                [datasource]="elem.datasource" [valueField]="elem.valueField"
+                [disabledIf]="elem.disabledIf ? elem.disabledIf(model) : null" [methodName]="elem.methodName"
+                [displayField]="elem.displayField"></cs-select>
+        </div>
         } @else if (elem.elemType === ElementType.Checkbox) {
-            <div [class]="'col-' + elem.col">
-                <cs-checkbox [(csModel)]="model[elem.key]" [label]="elem.label"></cs-checkbox>
-            </div>
+        <div [class]="'col-' + elem.col">
+            <cs-checkbox [(csModel)]="model[elem.key]" [label]="elem.label"></cs-checkbox>
+        </div>
         } @else if (elem.elemType === ElementType.DatePicker) {
-            <div [class]="'col-' + elem.col">
-                <cs-date-picker [label]="elem.label" [hint]="elem.hint" [(csModel)]="model[elem.key]"></cs-date-picker>
-            </div>
+        <div [class]="'col-' + elem.col">
+            <cs-date-picker [label]="elem.label" [hint]="elem.hint" [(csModel)]="model[elem.key]"></cs-date-picker>
+        </div>
         } @else if (elem.elemType === ElementType.Button) {
-            <div [class]="'col-' + elem.col">
-                <cs-button [label]="elem.label" [icon]="elem.icon"></cs-button>
-            </div>
+        <div [class]="'col-' + elem.col">
+            <cs-button [label]="elem.label" [icon]="elem.icon"></cs-button>
+        </div>
         } @else if (elem.elemType === ElementType.Textbox) {
-            <div [class]="'col-' + elem.col">
-                <cs-textarea [label]="elem.label" [required]="elem.required" [rows]="elem.rows"
-                [appearance]="elem.appearance" [csModel]="model[elem.key]" ></cs-textarea>
-            </div>
+        <div [class]="'col-' + elem.col">
+            <cs-textarea [label]="elem.label" [required]="elem.required" [rows]="elem.rows"
+                [appearance]="elem.appearance" [csModel]="model[elem.key]"></cs-textarea>
+        </div>
+        } @else if (elem.elemType === ElementType.RadioButton) {
+        <div [class]="'col-' + elem.col">
+           <cs-radiobutton [label]="elem.label" [required]="elem.required" 
+           [csModel]="model[elem.key]" [datasource]="elem.datasource"
+            [displayField]="elem.displayField" [valueField]="elem.valueField"></cs-radiobutton>
+        </div>
         } @else {
-            
+
         }
     </ng-container>
 </div>

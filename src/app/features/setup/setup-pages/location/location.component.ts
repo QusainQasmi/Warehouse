@@ -21,11 +21,18 @@ export class LocationComponent {
   elements: FromElement[] = [
     {
       col: 12,
-      elemType: ElementType.Input,
-      label: 'Code',
-      key: 'locCode',
-      required: true
+      elemType: ElementType.RadioButton,
+      label: 'select option',
+      key: 'isradio',
+      required: true,
+      valueField: 'id',
+      displayField: 'name',
+      datasource: [
+        {name: 'option 1', id: 1 },
+        {name: 'option 2', id: 2 }
+    ],
     },
+
     {
       col: 12,
       elemType: ElementType.Input,

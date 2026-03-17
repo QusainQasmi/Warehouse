@@ -32,6 +32,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MAT_DATE_FORMATS, MatNativeDateModule } from '@angular/material/core';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { CUSTOM_DATE_FORMATS } from './date-format';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [],
@@ -66,7 +67,8 @@ import { CUSTOM_DATE_FORMATS } from './date-format';
     MatDatepickerModule,
     MatNativeDateModule,
     MatListModule,
-    MatRippleModule
+    MatRippleModule,
+    MatRadioModule
     // BrowserAnimationsModule
   ],
   exports: [
@@ -100,7 +102,8 @@ import { CUSTOM_DATE_FORMATS } from './date-format';
     DatePipe,
     MatNativeDateModule,
     MatListModule,
-    MatRippleModule
+    MatRippleModule,
+    MatRadioModule
     // BrowserAnimationsModule
   ],
   providers: [
