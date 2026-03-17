@@ -11,14 +11,12 @@ import { SharedModule } from '../../core/shared/shared.module';
   styleUrls: ['./side-nav.component.scss'],
 })
 export class SideNavComponent {
-  // Direct Data - Kahi se bhi nahi aayega
-  companyName = 'TechCorp ERP';
-  companyLogo = ''; // Empty string = fallback icon ayega
+  companyName = 'Scripta';
+  companyLogo = '';
   collapsed = false;
   activeModule = '';
   isMobile = false;
 
-  // Modules Array - Direct yahin defined hai
   modules: any[] = [
     {
       id: 'dashboard',
