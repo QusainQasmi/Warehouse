@@ -29,10 +29,9 @@ import { DatePipe } from '@angular/common';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatListModule } from '@angular/material/list';
 import { MatRippleModule } from '@angular/material/core';
-import { MAT_DATE_FORMATS, MatNativeDateModule } from '@angular/material/core';
-import { provideNativeDateAdapter } from '@angular/material/core';
-import { CUSTOM_DATE_FORMATS } from './date-format';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   declarations: [],
@@ -68,8 +67,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatNativeDateModule,
     MatListModule,
     MatRippleModule,
-    MatRadioModule
-    // BrowserAnimationsModule
+    MatRadioModule,
+    MatBadgeModule
   ],
   exports: [
     MatButtonModule,
@@ -103,13 +102,12 @@ import { MatRadioModule } from '@angular/material/radio';
     MatNativeDateModule,
     MatListModule,
     MatRippleModule,
-    MatRadioModule
+    MatRadioModule,
     // BrowserAnimationsModule
+    MatBadgeModule
   ],
   providers: [
     { provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false} },
-    // { provide: MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS },
-    // provideNativeDateAdapter()
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

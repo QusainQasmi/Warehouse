@@ -1,53 +1,117 @@
-<div class="layout">
-
-  <!-- SIDEBAR -->
-  <div class="sidebar" [class.collapsed]="isCollapsed">
-
-    <!-- LOGO -->
-    <div class="logo">
-      <mat-icon>warehouse</mat-icon>
-      <span class="logo-text" *ngIf="!isCollapsed">
-        Logistics ERP
-      </span>
-    </div>
-
-    <!-- MENU -->
-    <div class="menu">
-
-      <div
-        class="menu-item"
-        *ngFor="let item of menu"
-        routerLink="{{item.route}}"
-        routerLinkActive="active"
-      >
-
-        <mat-icon>{{item.icon}}</mat-icon>
-
-        <span class="menu-title" *ngIf="!isCollapsed">
-          {{item.name}}
-        </span>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- MAIN CONTENT -->
-  <div class="main">
-
-    <div class="topbar">
-
-      <button mat-icon-button (click)="toggleSidebar()">
-        <mat-icon>menu</mat-icon>
-      </button>
-
-    </div>
-
-    <div class="content">
-      <router-outlet></router-outlet>
-    </div>
-
-  </div>
-
+<!-- Mobile Overlay -->
+<div class="sidebar-overlay" 
+     [class.active]="!collapsed && isMobile"
+     (click)="toggleSidebar()">
 </div>
+
+<aside class="sidebar" 
+       [class.collapsed]="collapsed"
+       [class.mobile]="isMobile"
+       [style.width.px]="isMobile ? (collapsed ? 0 : 280) : (collapsed ? 70 : 280)">
+  
+  <!-- Header -->
+  <div class="sidebar-header">
+    <div class="logo-container" [class.collapsed]="collapsed">
+      <div class="logo-wrapper">
+        <img [src]="companyLogo" [alt]="companyName" class="company-logo" *ngIf="companyLogo; else logoFallback">
+        <ng-template #logoFallback>
+          <mat-icon>business</mat-icon>
+        </ng-template>
+      </div>
+      <div class="company-info" *ngIf="!collapsed">
+        <h3 class="company-name">{{ companyName }}</h3>
+        <span class="company-tagline">Enterprise Suite</span>
+      </div>
+    </div>
+    
+    <!-- Toggle Button -->
+    <button class="toggle-btn" 
+            (click)="toggleSidebar()"
+            [attr.aria-label]="collapsed ? 'Expand' : 'Collapse'">
+      <mat-icon>{{ collapsed ? 'chevron_right' : 'chevron_left' }}</mat-icon>
+    </button>
+  </div>
+
+  <!-- Search -->
+  <div class="search-container" *ngIf="!collapsed">
+    <div class="search-box">
+      <mat-icon class="search-icon">search</mat-icon>
+      <input type="text" placeholder="Search modules..." class="search-input">
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="sidebar-nav">
+    <ul class="nav-list">
+      <li *ngFor="let module of modules" 
+          class="nav-item"
+          [class.has-children]="module.children?.length"
+          [class.expanded]="module.expanded"
+          [class.active]="isActive(module.route)">
+        
+        <!-- Parent Module -->
+        <a class="nav-link" 
+           (click)="onModuleClick(module, $event)"
+           [routerLink]="module.children?.length ? null : module.route"
+           [matTooltip]="collapsed ? module.name : ''"
+           matTooltipPosition="right">
+          
+          <div class="icon-wrapper">
+            <mat-icon [matBadge]="module.badge || 0" 
+                      [matBadgeHidden]="!module.badge || collapsed"
+                      matBadgeColor="warn"
+                      matBadgeSize="small">
+              {{ module.icon }}
+            </mat-icon>
+          </div>
+          
+          <span class="nav-text" *ngIf="!collapsed">{{ module.name }}</span>
+          
+          <mat-icon class="expand-icon" *ngIf="!collapsed && module.children?.length">
+            {{ module.expanded ? 'expand_less' : 'expand_more' }}
+          </mat-icon>
+        </a>
+
+        <!-- Child Modules -->
+        <ul class="submenu" *ngIf="!collapsed && module.children?.length && module.expanded">
+          <li *ngFor="let child of module.children" 
+              class="submenu-item"
+              [class.active]="isActive(child.route)">
+            <a class="submenu-link" 
+               [routerLink]="child.route"
+               (click)="activeModule = child.id">
+              <mat-icon class="submenu-icon">{{ child.icon }}</mat-icon>
+              <span class="submenu-text">{{ child.name }}</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Footer -->
+  <div class="sidebar-footer" *ngIf="!collapsed">
+    <div class="user-profile">
+      <div class="avatar">
+        <mat-icon>account_circle</mat-icon>
+      </div>
+      <div class="user-info">
+        <span class="user-name">{{ userName }}</span>
+        <span class="user-role">{{ userRole }}</span>
+      </div>
+      <button class="logout-btn" (click)="logout()" matTooltip="Logout">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Collapsed Footer -->
+  <div class="sidebar-footer-collapsed" *ngIf="collapsed">
+    <button class="icon-btn" [matTooltip]="userName" matTooltipPosition="right">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <button class="icon-btn" (click)="logout()" matTooltip="Logout" matTooltipPosition="right">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+</aside>

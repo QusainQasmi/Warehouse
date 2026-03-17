@@ -170,5 +170,6 @@ export interface CsGridColumn {
   sticky?: boolean;
   isDate?: boolean;
   isNumber?: boolean;
+  isBoolean?: boolean;
   template?: TemplateRef<{ $implicit: any }> | null;
 }

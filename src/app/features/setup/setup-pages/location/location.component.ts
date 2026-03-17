@@ -14,9 +14,24 @@ import { ElementType } from '../../../../../common.enums';
 export class LocationComponent {
 
   columns: CsGridColumn[] = [
-    { label: 'Code', key: 'locCode' },
-    { label: 'Name', key: 'locName' },
-    { label: 'Country', key: 'Country' },
+    { label: 'Code', key: 'unCode',  },
+    { label: 'Name', key: 'unName' },
+    // { label: 'Address', key: 'unAddress' },
+    // { label: 'City', key: 'city' },
+    // { label: 'State', key: 'unState' },
+    // { label: 'PostalCode', key: 'postalCode' },
+    // { label: 'Country', key: 'country' },
+    // { label: 'Latitude', key: 'latitude' },
+    // { label: 'Longitude', key: 'longitude' },
+    // { label: 'Port', key: 'isPort' },
+    // { label: 'Airport', key: 'isAirport' },
+    // { label: 'Warehouse', key: 'isWarehouse' },
+    // { label: 'PickupPoint', key: 'isPickupPoint' },
+    // { label: 'DeliveryPoint', key: 'isDeliveryPoint' },
+    // { label: 'Active', key: 'isActive' },
+    
+    
+    
   ];
   elements: FromElement[] = [
     {
