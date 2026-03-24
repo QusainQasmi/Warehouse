@@ -29,7 +29,7 @@ import { CsRadiobuttonComponent } from './cs-radiobutton/cs-radiobutton.componen
     CsDatePickerComponent,
     CsButtonComponent,
     CsTextareaComponent,
-    CsRadiobuttonComponent
+    CsRadiobuttonComponent,
   ],
   imports: [
     CommonModule,
@@ -48,7 +48,7 @@ import { CsRadiobuttonComponent } from './cs-radiobutton/cs-radiobutton.componen
     CsDatePickerComponent,
     CsButtonComponent,
     CsTextareaComponent,
-    CsRadiobuttonComponent
+    CsRadiobuttonComponent,
   ],
   providers: [
     {

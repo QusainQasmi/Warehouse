@@ -54,4 +54,5 @@ export interface FromElement {
   hint?: string;
   csModelChange?: (model: any) => any;
   rows?: number;
+  multiple?: boolean;
 }

@@ -32,6 +32,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatBadgeModule } from '@angular/material/badge';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [],
@@ -68,7 +69,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatListModule,
     MatRippleModule,
     MatRadioModule,
-    MatBadgeModule
+    MatBadgeModule,
+    NgSelectModule
   ],
   exports: [
     MatButtonModule,
@@ -103,8 +105,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatListModule,
     MatRippleModule,
     MatRadioModule,
-    // BrowserAnimationsModule
-    MatBadgeModule
+    MatBadgeModule,
+    NgSelectModule
   ],
   providers: [
     { provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false} },
