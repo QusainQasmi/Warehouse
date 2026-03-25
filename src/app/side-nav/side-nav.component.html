@@ -1,15 +1,9 @@
-<!-- Mobile Overlay -->
-<div class="sidebar-overlay" 
-     [class.active]="!collapsed && isMobile"
-     (click)="toggleSidebar()">
+<div class="sidebar-overlay" [class.active]="!collapsed && isMobile" (click)="toggleSidebar()">
 </div>
 
-<aside class="sidebar" 
-       [class.collapsed]="collapsed"
-       [class.mobile]="isMobile"
-       [style.width.px]="isMobile ? (collapsed ? 0 : 280) : (collapsed ? 70 : 280)">
-  
-  <!-- Header -->
+<aside class="sidebar" [class.collapsed]="collapsed" [class.mobile]="isMobile"
+  [style.width.px]="isMobile ? (collapsed ? 0 : 280) : (collapsed ? 70 : 280)">
+
   <div class="sidebar-header">
     <div class="logo-container" [class.collapsed]="collapsed">
       <div class="logo-wrapper">
@@ -23,16 +17,12 @@
         <span class="company-tagline">Technologies</span>
       </div>
     </div>
-    
-    <!-- Toggle Button -->
-    <button class="toggle-btn" 
-            (click)="toggleSidebar()"
-            [attr.aria-label]="collapsed ? 'Expand' : 'Collapse'">
+
+    <button class="toggle-btn" (click)="toggleSidebar()" [attr.aria-label]="collapsed ? 'Expand' : 'Collapse'">
       <mat-icon>{{ collapsed ? 'chevron_right' : 'chevron_left' }}</mat-icon>
     </button>
   </div>
 
-  <!-- Search -->
   <div class="search-container" *ngIf="!collapsed">
     <div class="search-box">
       <mat-icon class="search-icon">search</mat-icon>
@@ -40,46 +30,32 @@
     </div>
   </div>
 
-  <!-- Navigation -->
   <nav class="sidebar-nav">
     <ul class="nav-list">
-      <li *ngFor="let module of modules" 
-          class="nav-item"
-          [class.has-children]="module.children?.length"
-          [class.expanded]="module.expanded"
-          [class.active]="isActive(module.route)">
-        
-        <!-- Parent Module -->
-        <a class="nav-link" 
-           (click)="onModuleClick(module, $event)"
-           [routerLink]="module.children?.length ? null : module.route"
-           [matTooltip]="collapsed ? module.name : ''"
-           matTooltipPosition="right">
-          
+      <li *ngFor="let module of modules" class="nav-item" [class.has-children]="module.children?.length"
+        [class.expanded]="module.expanded" [class.active]="isActive(module.route)">
+
+        <a class="nav-link" (click)="onModuleClick(module, $event)"
+          [routerLink]="module.children?.length ? null : module.route" [matTooltip]="collapsed ? module.name : ''"
+          matTooltipPosition="right">     
+
           <div class="icon-wrapper">
-            <mat-icon [matBadge]="module.badge || 0" 
-                      [matBadgeHidden]="!module.badge || collapsed"
-                      matBadgeColor="warn"
-                      matBadgeSize="small">
+            <mat-icon [matBadge]="module.badge || 0" [matBadgeHidden]="!module.badge || collapsed" matBadgeColor="warn"
+              matBadgeSize="small">
               {{ module.icon }}
             </mat-icon>
           </div>
-          
+
           <span class="nav-text" *ngIf="!collapsed">{{ module.name }}</span>
-          
+
           <mat-icon class="expand-icon" *ngIf="!collapsed && module.children?.length">
             {{ module.expanded ? 'expand_less' : 'expand_more' }}
           </mat-icon>
         </a>
 
-        <!-- Child Modules -->
         <ul class="submenu" *ngIf="!collapsed && module.children?.length && module.expanded">
-          <li *ngFor="let child of module.children" 
-              class="submenu-item"
-              [class.active]="isActive(child.route)">
-            <a class="submenu-link" 
-               [routerLink]="child.route"
-               (click)="activeModule = child.id">
+          <li *ngFor="let child of module.children" class="submenu-item" [class.active]="isActive(child.route)">
+            <a class="submenu-link" [routerLink]="child.route" (click)="activeModule = child.id">
               <mat-icon class="submenu-icon">{{ child.icon }}</mat-icon>
               <span class="submenu-text">{{ child.name }}</span>
             </a>
@@ -89,7 +65,6 @@
     </ul>
   </nav>
 
-  <!-- Footer -->
   <div class="sidebar-footer" *ngIf="!collapsed">
     <div class="user-profile">
       <div class="avatar">
@@ -105,7 +80,6 @@
     </div>
   </div>
 
-  <!-- Collapsed Footer -->
   <div class="sidebar-footer-collapsed" *ngIf="collapsed">
     <button class="icon-btn" [matTooltip]="userName" matTooltipPosition="right">
       <mat-icon>account_circle</mat-icon>
@@ -115,3 +89,10 @@
     </button>
   </div>
 </aside>
+
+<div class="content-panel" [style.marginLeft.px]="collapsed ? (isMobile ? 0 : 70) : 280">
+  <button class="mobile-toggle" *ngIf="isMobile" (click)="toggleSidebar()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <router-outlet></router-outlet>
+</div>

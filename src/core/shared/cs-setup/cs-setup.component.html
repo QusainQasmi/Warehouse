@@ -2,16 +2,16 @@
   <div class="top-bar">
     <p class="setup-title">{{ title }}</p>
     <div class="d-flex align-items-center">
-      <cs-search-bar *ngIf="duplicateData && duplicateData.length > 0" [datasource]="duplicateData"
+      <cs-search-bar  [datasource]="duplicateData"
         (datasourceChange)="changeDatasource($event)"></cs-search-bar>
       <div class="btn-top">
 
         <button mat-mini-fab (click)="openFormFn()" matTooltip="Add New Record" class="page-action">
           <mat-icon>add</mat-icon>
         </button>
-        <button mat-mini-fab class="page-action" [matMenuTriggerFor]="menu">
+        <!-- <button mat-mini-fab class="page-action" [matMenuTriggerFor]="menu">
           <mat-icon>person</mat-icon>
-        </button>
+        </button> -->
         <mat-menu #menu="matMenu">
           <button mat-menu-item>
             <mat-icon>account_box</mat-icon>

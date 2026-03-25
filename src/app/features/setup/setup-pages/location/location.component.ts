@@ -16,22 +16,19 @@ export class LocationComponent {
   columns: CsGridColumn[] = [
     { label: 'Code', key: 'unCode',  },
     { label: 'Name', key: 'unName' },
-    // { label: 'Address', key: 'unAddress' },
-    // { label: 'City', key: 'city' },
-    // { label: 'State', key: 'unState' },
-    // { label: 'PostalCode', key: 'postalCode' },
-    // { label: 'Country', key: 'country' },
-    // { label: 'Latitude', key: 'latitude' },
-    // { label: 'Longitude', key: 'longitude' },
-    // { label: 'Port', key: 'isPort' },
-    // { label: 'Airport', key: 'isAirport' },
-    // { label: 'Warehouse', key: 'isWarehouse' },
-    // { label: 'PickupPoint', key: 'isPickupPoint' },
-    // { label: 'DeliveryPoint', key: 'isDeliveryPoint' },
-    // { label: 'Active', key: 'isActive' },
-    
-    
-    
+    { label: 'Address', key: 'unAddress' },
+    { label: 'City', key: 'city' },
+    { label: 'State', key: 'unState' },
+    { label: 'Postal Code', key: 'postalCode' },
+    { label: 'Country', key: 'country' },
+    { label: 'Latitude', key: 'latitude' },
+    { label: 'Longitude', key: 'longitude' },
+    { label: 'Port', key: 'isPort' },
+    { label: 'Airport', key: 'isAirport' },
+    { label: 'Warehouse', key: 'isWarehouse' },
+    { label: 'Pickup Point', key: 'isPickupPoint' },
+    { label: 'Delivery Point', key: 'isDeliveryPoint' },
+    { label: 'Active', key: 'isActive' },
   ];
   elements: FromElement[] = [
     {
