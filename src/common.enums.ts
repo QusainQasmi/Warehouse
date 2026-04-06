@@ -26,4 +26,5 @@ export enum Modules {
   FleetManagement = 'FleetManagement',
   Analytics = 'Analytics',
   Utilities = 'Utilities',
+  CRM = 'CRM'
 }

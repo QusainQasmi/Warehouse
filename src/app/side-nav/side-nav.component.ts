@@ -31,7 +31,27 @@ export class SideNavComponent {
         { id: 'location', name: 'Locations', icon: 'location_on', route: '/setup/location' },
         { id: 'party', name: 'Party', icon: 'person_pin', route: '/setup/party' },
       ]
-    }
+    },
+    {
+      id: Modules.CRM,
+      name: 'CRM',
+      icon: 'settings',
+      route: '/crm',
+      badge: 0,
+      children: [
+        // {}
+      ]
+    },
+    {
+      id: Modules.Utilities,
+      name: 'Utilities',
+      icon: 'build',
+      route: '/utilities',
+      badge: 0,
+      children: [
+        { id: 'userSetup', name: 'User', icon: 'person', route: '/utilities/user-setup' },
+      ]
+    },
   ];
 
   userName = 'Admin User';

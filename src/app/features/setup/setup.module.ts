@@ -4,8 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { SetupComponent } from './setup.component';
 import { SharedModule } from '../../../core/shared/shared.module';
 import { MatModules } from '../../../core/mat-modules';
-import { LocationComponent } from './setup-pages/location/location.component';
-import { PartyComponent } from './setup-pages/party/party.component';
+import { LocationComponent } from './location/location.component';
+import { PartyComponent } from './party/party.component';
 
 const routes: Routes = [
   {  path: 'location', component: LocationComponent },
