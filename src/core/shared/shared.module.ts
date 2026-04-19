@@ -15,6 +15,7 @@ import { CsDatePickerComponent } from './cs-date-picker/cs-date-picker.component
 import { CsButtonComponent } from './cs-button/cs-button.component';
 import { CsTextareaComponent } from './cs-textarea/cs-textarea.component';
 import { CsRadiobuttonComponent } from './cs-radiobutton/cs-radiobutton.component';
+import { CsFileuploaderComponent } from './cs-fileuploader/cs-fileuploader.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CsRadiobuttonComponent } from './cs-radiobutton/cs-radiobutton.componen
     CsButtonComponent,
     CsTextareaComponent,
     CsRadiobuttonComponent,
+    CsFileuploaderComponent
   ],
   imports: [
     CommonModule,
@@ -49,6 +51,7 @@ import { CsRadiobuttonComponent } from './cs-radiobutton/cs-radiobutton.componen
     CsButtonComponent,
     CsTextareaComponent,
     CsRadiobuttonComponent,
+    CsFileuploaderComponent
   ],
   providers: [
     {

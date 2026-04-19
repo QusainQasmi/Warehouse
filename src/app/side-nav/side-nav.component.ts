@@ -22,6 +22,35 @@ export class SideNavComponent {
 
   modules: any[] = [
     {
+      id: Modules.Dashboard,
+      name: 'Dashboard',
+      icon: 'dashboard',
+      route: '/dashboard',
+      badge: 0,
+      children: [
+        { id: 'overview', name: 'Overview', icon: '', route: '/' },
+        { id: 'jobShipmentSummary', name: 'Job & Shipment Summary', icon: '', route: '/' },
+        { id: 'outstandingSummary', name: 'Outstanding Summary', icon: '', route: '/' },
+        { id: 'alertsnotifications', name: 'Alerts & Notifications', icon: '', route: '/' },
+        { id: 'chartsanalytics', name: 'Charts / Analytics', icon: '', route: '/' },
+      ]
+    },
+    {
+      id: Modules.CRM,
+      name: 'CRM',
+      icon: 'settings',
+      route: '/crm',
+      badge: 0,
+      children: [
+        { id: 'leadmaster', name: 'Lead Master', icon: '', route: '/' },
+        { id: 'inquiry', name: ' Inquiry Form', icon: '', route: '/' },
+        { id: 'quotation', name: 'Quotations', icon: '', route: '/' },
+        { id: 'activity', name: 'Activity', icon: '', route: '/' },
+        { id: 'reports', name: 'Reports', icon: '', route: '/' },
+
+      ]
+    },
+    {
       id: Modules.Setup,
       name: 'Setup',
       icon: 'account_tree',
@@ -33,15 +62,80 @@ export class SideNavComponent {
       ]
     },
     {
-      id: Modules.CRM,
-      name: 'CRM',
-      icon: 'settings',
-      route: '/crm',
+      id: Modules.Operations,
+      name: 'OPERATIONS',
+      icon: 'dynamic_form',
+      route: '/operations',
       badge: 0,
       children: [
-        // {}
+        { id: 'booking', name: 'Booking', icon: '', route: '/' },
+        { id: 'job', name: 'Job Creation', icon: '', route: '/' },
+        { id: 'shipmentexecution', name: 'Shipment Execution', icon: '', route: '/' },
+        { id: 'report', name: 'Reports', icon: '', route: '/' },
       ]
     },
+
+    {
+      id: Modules.Warehouse,
+      name: 'WAREHOUSE',
+      icon: 'warehouse',
+      route: '/',
+      badge: 0,
+      children: [
+        { id: 'masterwarehouse', name: 'Master Warehouse', icon: '', route: '/' },
+        { id: 'grn', name: 'GRN', icon: '', route: '/' },
+        { id: 'putaway', name: 'Putaway / Stock Placement', icon: '', route: '/' },
+        { id: 'packing', name: 'Packing', icon: '', route: '/' },
+        { id: 'reports', name: 'Reports', icon: '', route: '/' },
+      ]
+    },
+    {
+      id: Modules.Billing_Document,
+      name: 'Billing & Document Prints',
+      icon: 'receipt_long',
+      route: '/',
+      badge: 0,
+      children: [
+        { id: 'customerinvoice', name: 'Customer Invoice', icon: '', route: '/' },
+        { id: 'vendorbill', name: 'Vendor Bills', icon: '', route: '/' },
+        { id: 'agentinvoice', name: 'Agent Invoice', icon: '', route: '/' },
+        { id: 'shippingnstructions', name: 'Shipping Instructions', icon: '', route: '/' },
+        { id: 'hbl_mbl', name: 'House of BL / Master of BL', icon: '', route: '/' },
+        { id: 'debitcredit', name: 'Debit & Credit Notes', icon: '', route: '/' },
+        { id: 'report', name: 'Reports', icon: '', route: '/' },
+      ]
+    },
+   
+     {
+      id: Modules.Account_General_Ledger,
+      name: 'Account & General Ledger',
+      icon: 'inbox_text_person',
+      route: '/',
+      badge: 0,
+      children: [
+        { id: 'chartofaccount', name: 'Chart of Account', icon: '', route: '/' },
+        { id: 'Voucher', name: 'Voucher', icon: '', route: '/' },
+        { id: 'bankcashmanagment', name: 'Bank / Cash Managment', icon: '', route: '/' },
+        { id: 'accountactivity', name: 'Account Activity', icon: '', route: '/' },
+        { id: 'multycurrency', name: 'Multy currency', icon: '', route: '/' },
+        { id: 'report', name: 'Report', icon: '', route: '/' },
+      ]
+    },
+     {
+      id: Modules.Payroll,
+      name: 'Payroll',
+      icon: 'payment_arrow_down',
+      route: '/',
+      badge: 0,
+      children: [
+        { id: 'masteremployee', name: 'Master Employee', icon: '', route: '/' },
+        { id: 'attendance', name: 'Attendance', icon: '', route: '/' },
+        { id: 'salarystructure', name: 'Salary Structure', icon: '', route: '/' },
+        { id: 'payrollprocessing', name: 'Payroll Processing', icon: '', route: '/' },
+        { id: 'reports', name: 'Reports', icon: '', route: '/' },
+      ]
+    },
+
     {
       id: Modules.Utilities,
       name: 'Utilities',
