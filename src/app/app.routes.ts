@@ -7,6 +7,7 @@ export const routes: Routes = [
     component: SideNavComponent,
     children: [
         { path: 'setup', loadChildren: () => import('./features/setup/setup.module').then(m => m.SetupModule)},
+        // { path: 'crm', loadChildren: () => import('./features/setup/setup.module').then(m => m.SetupModule)},
     ]
   },
 ];

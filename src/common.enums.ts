@@ -22,14 +22,14 @@ export enum Modules {
   Operations = 'Operations',
   Warehouse = 'Warehouse',
   Billing_Document = 'Billing_Document', 
-  Account_General_Ledger = 'Account_General_Ledger',
+  Accounts = 'Accounts',
   Payroll = 'Payroll',
   Transport = 'Transport',
   Shipment = 'Shipment',
   Import = 'Import',
   Export = 'Export',
   Inventory = 'Inventory',
-  FleetManagement = 'FleetManagement',
+  Transportaion = 'Transportaion',
   Analytics = 'Analytics',
   Utilities = 'Utilities'
 
