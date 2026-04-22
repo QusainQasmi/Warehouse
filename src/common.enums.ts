@@ -19,6 +19,7 @@ export enum Modules {
   Dashboard = 'Dashboard',
   CRM = 'CRM',
   Setup = 'Setup',
+  Transportation = 'Transportaion',
   Operations = 'Operations',
   Warehouse = 'Warehouse',
   Billing_Document = 'Billing_Document', 
@@ -29,7 +30,6 @@ export enum Modules {
   Import = 'Import',
   Export = 'Export',
   Inventory = 'Inventory',
-  Transportaion = 'Transportaion',
   Analytics = 'Analytics',
   Utilities = 'Utilities'
 

@@ -44,7 +44,7 @@ export class SideNavComponent {
       children: [
         { id: 'location', name: 'Locations', icon: 'location_on', route: '/setup/location' },
         { id: 'party', name: 'Party', icon: 'person_pin', route: '/setup/party' },
-        { id: 'containerType', name: 'Contaier Type', icon: 'person_pin', route: '/setup/container-type' },
+        { id: 'containerType', name: 'Container Type', icon: 'person_pin', route: '/setup/container-type' },
         { id: 'chargeType', name: 'Charge Type', icon: 'person_pin', route: '/setup/charge-type' },
         { id: 'currency', name: 'Currency', icon: 'person_pin', route: '/setup/currency' },
         { id: 'exchangeRate', name: 'Exchange Rate', icon: 'person_pin', route: '/setup/exchange-rate' },
@@ -57,29 +57,46 @@ export class SideNavComponent {
     {
       id: Modules.CRM,
       name: 'CRM',
-      icon: 'settings',
+      icon: 'manage_accounts',
       route: '/crm',
       badge: 0,
       children: [
-        { id: 'leadmaster', name: 'Lead Master', icon: '', route: '/' },
-        { id: 'inquiry', name: ' Inquiry Form', icon: '', route: '/' },
-        { id: 'quotation', name: 'Quotations', icon: '', route: '/' },
-        { id: 'activity', name: 'Activity', icon: '', route: '/' },
-        { id: 'reports', name: 'Reports', icon: '', route: '/' },
+        { id: 'lead', name: 'Lead ', icon: '', route: '/crm/lead' },
+        { id: 'inquiry', name: ' Inquiry', icon: '', route: '/crm/inquiry' },
+        { id: 'quotation', name: 'Quotations', icon: '', route: '/crm/quotation' },
+        // { id: 'activity', name: 'Activity', icon: '', route: '/' },
+        // { id: 'reports', name: 'Reports', icon: '', route: '/' },
 
       ]
     },
         {
-      id: Modules.Transportaion,
+      id: Modules.Transportation,
       name: 'Transportaion',
-      icon: 'settings',
-      route: '/crm',
+      icon: 'local_shipping',
+      route: '/transportation',
       badge: 0,
       children: [
-        { id: 'leadmaster', name: 'Lead Master', icon: '', route: '/' },
-        { id: 'inquiry', name: ' Inquiry Form', icon: '', route: '/' },
+        { id: 'job', name: 'Job', icon: '', route: '/transportation/job' },
+        { id: 'vehicle', name: ' Vehicle', icon: '', route: '/transportation/vehicle' },
+        { id: 'driver', name: ' Driver', icon: '', route: '/transportation/driver' },
  
 
+      ]
+    },
+         {
+      id: Modules.Accounts,
+      name: 'Accounts',
+      icon: 'person',
+      route: '/',
+      badge: 0,
+      children: [
+        { id: 'chartOfAccount', name: 'Chart of Accounts', icon: '', route: '/accounts/chartOfAccounts' },
+        { id: 'voucher', name: 'Voucher', icon: '', route: '/accounts/voucher' },
+        { id: 'invoice', name: 'Invoice', icon: '', route: '/accounts/invoice' },
+        // { id: 'bankCash', name: 'Bank / Cash', icon: '', route: '/' },
+        // { id: 'accountActivity', name: 'Account Activity', icon: '', route: '/' },
+        // { id: 'multyCurrency', name: 'Multy currency', icon: '', route: '/' },
+        // { id: 'report', name: 'Report', icon: '', route: '/' },
       ]
     },
 
@@ -128,21 +145,7 @@ export class SideNavComponent {
     //   ]
     // },
    
-     {
-      id: Modules.Accounts,
-      name: 'Accounts',
-      icon: 'inbox_text_person',
-      route: '/',
-      badge: 0,
-      children: [
-        { id: 'chartofaccount', name: 'Chart of Account', icon: '', route: '/' },
-        { id: 'Voucher', name: 'Voucher', icon: '', route: '/' },
-        { id: 'bankcashmanagment', name: 'Bank / Cash Managment', icon: '', route: '/' },
-        { id: 'accountactivity', name: 'Account Activity', icon: '', route: '/' },
-        { id: 'multycurrency', name: 'Multy currency', icon: '', route: '/' },
-        { id: 'report', name: 'Report', icon: '', route: '/' },
-      ]
-    },
+
     //  {
     //   id: Modules.Payroll,
     //   name: 'Payroll',

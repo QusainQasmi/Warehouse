@@ -20,6 +20,7 @@ const routes: Routes = [
   {  path: 'party', component: PartyComponent },
   {  path: 'container-type', component: ContainerTypeComponent },
   {  path: 'charge-type', component: ChargeTypeComponent },
+  {  path: 'currency', component: CurrencyComponent },
   {  path: 'exchange-rate', component: ExchangeRateComponent },
   {  path: 'unit-of-measure', component: UnitOfMeasureComponent },
   {  path: 'service-type', component: ServiceTypeComponent },
