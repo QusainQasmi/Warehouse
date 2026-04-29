@@ -6,7 +6,7 @@ import { HttpHelper } from '../httpHelper';
 
 export abstract class BaseService {
 
-  protected baseUrl = environment.apiUrl;
+  protected baseUrl = environment.newProductionUrl;
   protected controllerName: string = "";
 
   constructor(protected controller: string) {

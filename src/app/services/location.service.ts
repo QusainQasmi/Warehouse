@@ -10,11 +10,13 @@ export class LocationService extends BaseService {
     super("Locations");
   }
 
+  // Update Delete
+
   async getAllData(){
     return await this.getAll("GetAllData");
   }
 
   async saveData(body: any, id?: any){
-    return await this.save("Add", body, id);
+    return await this.save("Create", body, id);
   }
 }
