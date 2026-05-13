@@ -1,0 +1,73 @@
+<div class="main-wrapper">
+
+    <div class="card">
+        <div class="left">
+            <div class="form-container">
+                <div class="heading">
+                    <h2>Welcome User!</h2>
+                    <p>
+                        Login and manage your shipment,
+                        logistics and operations easily.
+                    </p>
+                </div>
+
+                <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Full Name</mat-label>
+                        <mat-icon matPrefix>person</mat-icon>
+                        <input matInput type="text" name="fullName" [(ngModel)]="model.fullName" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email Address</mat-label>
+                        <mat-icon matPrefix>mail</mat-icon>
+                        <input matInput type="email" name="email" [(ngModel)]="model.email" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <mat-icon matPrefix>lock</mat-icon>
+                        <input matInput [type]="hidePassword ? 'password' : 'text'" name="password"
+                            [(ngModel)]="model.password" required>
+                        <button mat-icon-button matSuffix type="button" (click)="togglePassword()">
+                            <mat-icon>
+                                {{ hidePassword ? 'visibility_off' : 'visibility' }}
+                            </mat-icon>
+                        </button>
+                    </mat-form-field>
+
+                    <div class="terms">
+                        <mat-checkbox color="primary">
+                            I agree to Terms & Conditions
+                        </mat-checkbox>
+                    </div>
+                </form>
+
+                <div class="social">
+                    <button mat-raised-button type="button" class="login-btn">
+                        <mat-icon>login</mat-icon>
+                        Login
+                    </button>
+
+                    <button mat-stroked-button type="button" class="company-btn">
+                        <mat-icon>business</mat-icon>
+                        Create Company
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="overlay"></div>
+            <img src="/login-img.jpg" alt="warehouse-erp">
+
+            <div class="content">
+                <h1>Scripta ERP</h1>
+                <p>
+                    Manage Import & Export, shipments, logistics,
+                    finance, CRM and operations from one platform.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

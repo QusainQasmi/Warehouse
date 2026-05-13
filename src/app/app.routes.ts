@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
 import { SideNavComponent } from './side-nav/side-nav.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
-  { 
+  { path: 'login', component: LoginComponent },
+  {
     path: '', 
     component: SideNavComponent,
     children: [
