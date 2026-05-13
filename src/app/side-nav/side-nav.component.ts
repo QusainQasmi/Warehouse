@@ -161,16 +161,16 @@ export class SideNavComponent {
     //   ]
     // },
 
-    // {
-    //   id: Modules.Utilities,
-    //   name: 'Utilities',
-    //   icon: 'build',
-    //   route: '/utilities',
-    //   badge: 0,
-    //   children: [
-    //     { id: 'userSetup', name: 'User', icon: 'person', route: '/utilities/user-setup' },
-    //   ]
-    // },
+    {
+      id: Modules.Utilities,
+      name: 'Utilities',
+      icon: 'build',
+      route: '/utilities',
+      badge: 0,
+      children: [
+        { id: 'users', name: 'Users', icon: 'person', route: '/utilities/users' },
+      ]
+    },
   ];
 
   userName = 'Admin User';

@@ -12,6 +12,7 @@ export const routes: Routes = [
         { path: 'crm', loadChildren: () => import('./features/crm/crm.module').then(m => m.CRMModule)},
         { path: 'transportation', loadChildren: () => import('./features/Transportation/transportation.module').then(m => m.TransportationModule)},
         { path: 'accounts', loadChildren: () => import('./features/accounts/accounts.module').then(m => m.AccountsModule)},
+        { path: 'utilities', loadChildren: () => import('./features/Utilities/Utilities.module').then(m => m.UtilitiesModule)},
     ]
-  },
+  },    
 ];

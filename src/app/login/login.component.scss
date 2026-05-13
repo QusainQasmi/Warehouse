@@ -7,7 +7,7 @@
 .main-wrapper {
   width: 100%;
   min-height: 100vh;
-  padding: 30px;
+  padding: 50px;
   background: #eef2f7;
   display: flex;
   justify-content: center;
@@ -208,12 +208,15 @@ mat-form-field {
   flex: 0 0 55%;
   width: 55%;
   height: 100%;
+  background-image: url(login.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 
   position: relative;
 
   overflow: hidden;
 
-  background: #111827;
+  // background: #111827;
 }
 
 /* IMAGE */
@@ -247,12 +250,9 @@ mat-form-field {
 
 .content {
   position: absolute;
-
-  left: 45px;
-  bottom: 45px;
-
+  left: 24px;
+  bottom: 20px;
   z-index: 2;
-
   color: #ffffff;
 }
 
