@@ -172,4 +172,5 @@ export interface CsGridColumn {
   isNumber?: boolean;
   isBoolean?: boolean;
   template?: TemplateRef<{ $implicit: any }> | null;
+  formElements?: FromElement;
 }

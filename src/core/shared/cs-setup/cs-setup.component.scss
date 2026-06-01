@@ -129,36 +129,20 @@
 //   }
 // }
 
-/* =========================================
-   MAIN CONTAINER
-========================================= */
-
 .cs-setup-container {
   padding: 20px;
   background: var(--bg-body);
 }
 
-/* =========================================
-   FILTER CARD
-========================================= */
-
 .filter-card {
-
   background: var(--bg-card);
-
   border-radius: 8px;
-
   padding: 18px 24px;
-
   margin-bottom: 22px;
-
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-
   gap: 24px;
-
   box-shadow: var(--shadow-light);
-
 }
 
 .filter-item {
@@ -167,316 +151,176 @@
 }
 
 .filter-item label {
-
   font-size: 14px;
   font-weight: 500;
-
   margin-bottom: 8px;
-
   color: var(--text-dark);
-
 }
 
 .filter-item select {
-
   border: none;
   border-bottom: 1px solid var(--border-color);
-
   padding: 8px 0;
-
   background: transparent;
-
   outline: none;
-
   font-size: 14px;
-
 }
-
-/* =========================================
-   TABLE CARD
-========================================= */
 
 .table-card {
-
   background: var(--bg-card);
-
   border-radius: 14px;
-
   overflow: hidden;
-
   box-shadow: var(--shadow-medium);
-
 }
 
-/* =========================================
-   HEADER
-========================================= */
-
 .table-header {
-
   height: 72px;
-
   padding: 0 22px;
-
   background: var(--primary-gradient);
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   position: relative;
-
 }
-
-/* ===== LEFT / RIGHT ===== */
 
 .header-left,
 .header-right {
-
   display: flex;
   align-items: center;
-
   gap: 12px;
-
   z-index: 2;
-
 }
-
-/* ===== TITLE ===== */
 
 .header-title {
-
   position: absolute;
-
   left: 50%;
   transform: translateX(-50%);
-
   color: var(--text-white);
-
   font-size: 18px;
   font-weight: 600;
-
   letter-spacing: 0.3px;
-
 }
 
-/* =========================================
-   HEADER BUTTONS
-========================================= */
-
 .circle-btn {
-
   width: 44px !important;
   height: 44px !important;
-
   background: rgba(255,255,255,0.10) !important;
-
   border: 1px solid rgba(255,255,255,0.40);
-
   box-shadow: none !important;
-
   transition: all 0.2s ease;
-
 }
 
 .circle-btn:hover {
-
   transform: scale(1.04);
-
   background: rgba(255,255,255,0.18) !important;
-
 }
 
 .circle-btn .mat-icon {
-
   color: var(--text-white);
-
   font-size: 22px;
-
 }
 
 .close-btn {
-
   background: rgba(103,58,183,0.35) !important;
-
 }
-
-/* =========================================
-   TABLE WRAPPER
-========================================= */
 
 .table-wrapper {
-
   overflow-x: auto;
-
   background: var(--bg-card);
-
 }
-
-/* =========================================
-   TABLE
-========================================= */
 
 .cs-table {
-
   width: 100%;
-
   min-width: 1200px;
-
   background: var(--bg-card);
-
 }
 
-/* ===== HEADER ===== */
-
 .cs-table .mat-mdc-header-row {
-
   height: 64px;
-
   background: var(--table-header-bg);
-
   border-bottom: 1px solid var(--border-color);
-
 }
 
 .cs-table .mat-mdc-header-cell {
-
   color: var(--text-dark) !important;
-
   font-size: 15px;
   font-weight: 700;
-
   padding: 0 22px !important;
-
   white-space: nowrap;
-
 }
 
-/* ===== ROW ===== */
-
 .cs-table .mat-mdc-row {
-
   height: 58px;
-
   border-bottom: 1px solid #f0f0f0;
-
   transition: 0.2s ease;
-
 }
 
 .cs-table .mat-mdc-row:hover {
-
   background: var(--table-row-hover);
-
 }
-
-/* ===== CELL ===== */
 
 .cs-table .mat-mdc-cell {
-
   color: var(--text-medium);
-
   font-size: 14px;
-
   padding: 0 22px !important;
-
   white-space: nowrap;
-
 }
 
-/* =========================================
-   ACTION BUTTONS
-========================================= */
-
 .action-buttons {
-
   display: flex;
   align-items: center;
-
   gap: 10px;
-
 }
 
 .table-btn {
-
   width: 34px;
   height: 34px;
-
   border-radius: 50%;
-
   border: none;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   cursor: pointer;
-
   transition: 0.2s ease;
-
 }
 
 .table-btn:hover {
-
   transform: scale(1.05);
-
 }
 
 .table-btn mat-icon {
-
   font-size: 18px;
-
 }
 
 .table-btn.edit {
-
   background: rgba(33,150,243,0.12);
-
   color: #2196f3;
-
 }
 
 .table-btn.delete {
-
   background: rgba(244,67,54,0.12);
-
   color: #f44336;
-
 }
-
-/* =========================================
-   EMPTY / LOADING
-========================================= */
 
 .loading-container,
 .empty-container {
-
   height: 140px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: var(--text-medium);
-
   font-size: 16px;
-
 }
 
 .spin {
-
   animation: spin 1s linear infinite;
-
   margin-right: 10px;
-
 }
 
 @keyframes spin {
-
   100% {
     transform: rotate(360deg);
   }
-
 }
 
 .table-wrapper::-webkit-scrollbar {
@@ -484,7 +328,7 @@
 }
 
 .table-wrapper::-webkit-scrollbar-track {
-  background: #e9e9e9;
+  background: var(--light-bg);
   border-radius: 20px;
 }
 
@@ -495,7 +339,6 @@
     var(--primary-dark)
   );
   border-radius: 20px;
-
 }
 
 @media (max-width: 992px) {
@@ -512,11 +355,8 @@
   }
 
   .header-title {
-
     position: static;
-
     transform: none;
-
   }
 
 }

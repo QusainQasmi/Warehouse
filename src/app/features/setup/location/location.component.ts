@@ -69,6 +69,23 @@ export class LocationComponent {
     //   appearance: 'outline'
     // }
   ];
+  users: any[] = [
+    {
+      id: 1,
+      name: 'Muhammad Moin',
+      email: 'moin@gmail.com'
+    },
+    {
+      id: 2,
+      name: 'Ali Khan',
+      email: 'ali@gmail.com'
+    },
+    {
+      id: 3,
+      name: 'Ahmed',
+      email: 'ahmed@gmail.com'
+    }
+  ];
 
   constructor(public _service: LocationService){}
 

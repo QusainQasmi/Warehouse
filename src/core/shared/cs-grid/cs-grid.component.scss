@@ -1,0 +1,32 @@
+.grid-container {
+  padding: 16px;
+  border-radius: 12px;
+  background: #fff;
+  overflow-x: auto;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+table {
+  width: 100%;
+  min-width: 600px;
+}
+
+@media (max-width: 768px) {
+  table {
+    min-width: 100%;
+    font-size: 12px;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}

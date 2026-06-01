@@ -16,6 +16,7 @@ import { CsButtonComponent } from './cs-button/cs-button.component';
 import { CsTextareaComponent } from './cs-textarea/cs-textarea.component';
 import { CsRadiobuttonComponent } from './cs-radiobutton/cs-radiobutton.component';
 import { CsFileuploaderComponent } from './cs-fileuploader/cs-fileuploader.component';
+import { CsGridComponent } from './cs-grid/cs-grid.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CsFileuploaderComponent } from './cs-fileuploader/cs-fileuploader.compo
     CsButtonComponent,
     CsTextareaComponent,
     CsRadiobuttonComponent,
-    CsFileuploaderComponent
+    CsFileuploaderComponent,
+    CsGridComponent
   ],
   imports: [
     CommonModule,
@@ -51,7 +53,8 @@ import { CsFileuploaderComponent } from './cs-fileuploader/cs-fileuploader.compo
     CsButtonComponent,
     CsTextareaComponent,
     CsRadiobuttonComponent,
-    CsFileuploaderComponent
+    CsFileuploaderComponent,
+    CsGridComponent
   ],
   providers: [
     {
